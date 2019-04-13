@@ -1,23 +1,28 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct half_edge;
+struct halfEdge;
+
+struct point{
+    double x;
+    double y;
+};
 
 struct vertex {
-    pair<int,int> cord;
-    struct half_edge *rep; 
+    point coordinates;
+    struct halfEdge *incidentEdge; 
 };
 
 struct face {
-    struct half_edge *rep;  
+    struct halfEdge *startEdge;  
 };
 
-struct half_edge {
-    struct half_edge *prev;  
-    struct half_edge *next;  
-    struct half_edge *twin;  
-    struct vertex *tail;     
-    struct face *left;      
+struct halfEdge {
+    struct halfEdge *prev;  
+    struct halfEdge *next;  
+    struct halfEdge *twin;  
+    struct vertex *origin;     
+    struct face *incidentFace;      
 };
 
 int main()
