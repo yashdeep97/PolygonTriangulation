@@ -11,12 +11,26 @@ public:
 	DCELHalfEdge();
 	~DCELHalfEdge();
 
+	/// Twin of the DCEL half edge
 	DCELHalfEdge* twin;
+
+	/// next DCEL half edge
 	DCELHalfEdge* next;
+
+	/// Face to the left of the edge
 	DCELFace* face;
+
+	/// origin of the half edge
 	DCELVertex* origin;
+
+	/// helper vertex used in the algorithm to convert polygon to y-monotone polygon
 	DCELVertex* helper;
+
+	/**
+	 * Get previous edge.
+	*/
 	DCELHalfEdge* getPrev();
+	
 	int meta;
 };
 
@@ -29,10 +43,7 @@ DCELHalfEdge::~DCELHalfEdge()
 {
 
 }
-//! Half Edges
-/*!
- * get Previus Vertices
- * */
+
 DCELHalfEdge* DCELHalfEdge::getPrev()
 {
 	DCELHalfEdge* rval = twin->next->twin;

@@ -1,22 +1,43 @@
 using namespace std;
+
 class DCELVertex  
 {
-public:
-	DCELVertex();
-	~DCELVertex();
+	public:
+		DCELVertex();
+		~DCELVertex();
 
-	double x;
-	double y;
-	DCELHalfEdge* edge;
-	DCELHalfEdge* getEdgeTo(DCELVertex* v);
-	DCELHalfEdge* getEdgeOnFace(DCELFace* face);
-	void setCoords(double a, double b);
-	void print();
-	int type;
-	int index;
-	
-	DCELVertex* next;
-	DCELVertex* prev;
+		/// x coordinate of the vertex.
+		double x;
+		/// y coordinate of the vertex.
+		double y;
+
+		/// Half edge that has this vertex as the origin.
+		DCELHalfEdge* edge;
+
+		/**
+		 * Gets the edge which is incident edge for a face.
+		 * @param DCEL face
+		 * @return DCEL edge
+		*/
+		DCELHalfEdge* getEdgeOnFace(DCELFace* face);
+
+		/**
+		 * Set coordinates for the vertex of DCEL.
+		 * @param a : x coordinate of vertex 
+		 * @param b : y coordinate of vertex
+		 */
+		void setCoords(double a, double b);
+
+		/**
+		 * Prints coordinates of the vertex.
+		*/
+		void print();
+
+		int type;
+		int index;
+		
+		DCELVertex* next;
+		DCELVertex* prev;
 };
 
 DCELVertex::DCELVertex(): x(0.0), y(0.0), edge(NULL), prev(NULL), next(NULL), type(0), index(0)
@@ -27,6 +48,7 @@ DCELVertex::~DCELVertex()
 
 }
 
+
 void DCELVertex::setCoords(double a, double b) {
 	x = a;
 	y = b;
@@ -36,30 +58,12 @@ void DCELVertex::print() {
 	cout<<x<<" "<<y<<endl;
 }
 
-DCELHalfEdge* DCELVertex::getEdgeTo(DCELVertex* v)
-{
-	DCELHalfEdge* rval = NULL;
-
-	if (edge) {
-		if (edge->twin->origin == v) {
-			rval = edge;
-		} else {
-			DCELHalfEdge* test = edge->twin->next;
-			while (rval == NULL && test != edge) {
-				if (test->twin->origin == v) {
-					rval = test;
-				} else {
-					test = test->twin->next;
-				}
-			}
-		}
-	}
-	return rval;
-}
 
 DCELHalfEdge* DCELVertex::getEdgeOnFace(DCELFace *face)
 {
 	DCELHalfEdge *edgeWalker = edge;
-	while (edgeWalker->face != face) edgeWalker = edgeWalker->twin->next;
+	while (edgeWalker->face != face){
+		edgeWalker = edgeWalker->twin->next;
+	}
 	return edgeWalker;
 }

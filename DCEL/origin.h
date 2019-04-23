@@ -22,7 +22,7 @@ FaceList Faces; //Head of linked-list containing Face Collation
 void getPolygon(char const *filename) {
 	double a, b, c ;
 	DCELVertex* firstVertex;
-	DCELVertex *walker = new DCELVertex();
+	// DCELVertex *walker = new DCELVertex();
 	DCELHalfEdge *LaggingTwin = NULL;
 	DCELFace *inner = new DCELFace();
 	DCELFace *outer = new DCELFace();
@@ -72,7 +72,7 @@ void printPolygon() {
 				cout << edgeWalker->origin->index << " ";
 				edgeWalker = edgeWalker->next;
 			} while (edgeWalker != walker->edge);
-			cout << (double)rand() / RAND_MAX << " " << (double)rand() / RAND_MAX << " " << (double)rand() / RAND_MAX;
+			// cout << (double)rand() / RAND_MAX << " " << (double)rand() / RAND_MAX << " " << (double)rand() / RAND_MAX;
 			cout << endl;
 		}
 		walker = walker->next;

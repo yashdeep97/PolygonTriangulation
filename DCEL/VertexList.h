@@ -9,9 +9,25 @@ public:
 	DCELVertex* head;
 	DCELVertex* tail;
 
+	/**
+	 * Add a vertex to the vertex list at the correct position.
+	 * (List is sorted according to the y-coordiante)
+	 * @param newVertex : the pointer to the DCEL vertex that needs to be added to the list.
+	*/
 	void addToList(DCELVertex* newVertex);
+
+	/// Length of the vertex linked list
 	int length;
-	void removeFromList(DCELVertex* vertex);
+
+	// /**
+	//  * Delete a vertex from the vertex list.
+	//  * @param vertex : the pointer to the vertex that must be deleted from the list.
+	// */
+	// void removeFromList(DCELVertex* vertex);
+
+	/**
+	 * Print all the points in the vertex list.
+	*/
 	void echo();
 };
 
@@ -58,21 +74,21 @@ void VertexList::addToList(DCELVertex* newVertex)
 	}
 }
 
-void VertexList::removeFromList(DCELVertex* vertex)
-{
-	length--;
-	if (head) {
-		DCELVertex* walker = head;
-		if (walker == vertex) {
-			head = walker->next;
-			delete walker;
-		}
-		while (walker->next != vertex && walker->next != NULL) {
-			walker = walker->next;
-		}
-		if (walker->next = vertex) {
-			walker->next = vertex->next;
-			delete vertex;
-		}
-	}
-}
+// void VertexList::removeFromList(DCELVertex* vertex)
+// {
+// 	length--;
+// 	if (head) {
+// 		DCELVertex* walker = head;
+// 		if (walker == vertex) {
+// 			head = walker->next;
+// 			delete walker;
+// 		}
+// 		while (walker->next != vertex && walker->next != NULL) {
+// 			walker = walker->next;
+// 		}
+// 		if (walker->next = vertex) {
+// 			walker->next = vertex->next;
+// 			delete vertex;
+// 		}
+// 	}
+// }
