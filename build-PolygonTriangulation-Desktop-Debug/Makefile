@@ -59,7 +59,9 @@ OBJECTS       = main.o \
 		qcustomplot.o \
 		moc_mainwindow.o \
 		moc_qcustomplot.o
-DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+DIST          = ../PolygonTriangulation/Algorithm/input.txt \
+		../PolygonTriangulation/Algorithm/test.txt \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
@@ -113,6 +115,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../PolygonTriangulation/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -133,7 +136,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../PolygonTriangulation/PolygonTriangulation.pro ../PolygonTriangulation/mainwindow.h \
-		../PolygonTriangulation/qcustomplot.h ../PolygonTriangulation/main.cpp \
+		../PolygonTriangulation/qcustomplot.h \
+		../PolygonTriangulation/Algorithm/DCELFace.h \
+		../PolygonTriangulation/Algorithm/DCELHalfEdge.h \
+		../PolygonTriangulation/Algorithm/DCELVertex.h \
+		../PolygonTriangulation/Algorithm/FaceList.h \
+		../PolygonTriangulation/Algorithm/HalfEdgeList.h \
+		../PolygonTriangulation/Algorithm/monotone.h \
+		../PolygonTriangulation/Algorithm/origin.h \
+		../PolygonTriangulation/Algorithm/triangulate.h \
+		../PolygonTriangulation/Algorithm/VertexList.h ../PolygonTriangulation/main.cpp \
 		../PolygonTriangulation/mainwindow.cpp \
 		../PolygonTriangulation/qcustomplot.cpp
 QMAKE_TARGET  = PolygonTriangulation
@@ -201,6 +213,7 @@ Makefile: ../PolygonTriangulation/PolygonTriangulation.pro /usr/lib/x86_64-linux
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -280,6 +293,7 @@ Makefile: ../PolygonTriangulation/PolygonTriangulation.pro /usr/lib/x86_64-linux
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -319,7 +333,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../PolygonTriangulation/mainwindow.h ../PolygonTriangulation/qcustomplot.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../PolygonTriangulation/mainwindow.h ../PolygonTriangulation/qcustomplot.h ../PolygonTriangulation/Algorithm/DCELFace.h ../PolygonTriangulation/Algorithm/DCELHalfEdge.h ../PolygonTriangulation/Algorithm/DCELVertex.h ../PolygonTriangulation/Algorithm/FaceList.h ../PolygonTriangulation/Algorithm/HalfEdgeList.h ../PolygonTriangulation/Algorithm/monotone.h ../PolygonTriangulation/Algorithm/origin.h ../PolygonTriangulation/Algorithm/triangulate.h ../PolygonTriangulation/Algorithm/VertexList.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../PolygonTriangulation/main.cpp ../PolygonTriangulation/mainwindow.cpp ../PolygonTriangulation/qcustomplot.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../PolygonTriangulation/mainwindow.ui $(DISTDIR)/
 
@@ -390,7 +404,17 @@ main.o: ../PolygonTriangulation/main.cpp ../PolygonTriangulation/mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../PolygonTriangulation/main.cpp
 
 mainwindow.o: ../PolygonTriangulation/mainwindow.cpp ../PolygonTriangulation/mainwindow.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../PolygonTriangulation/qcustomplot.h \
+		../PolygonTriangulation/Algorithm/triangulate.h \
+		../PolygonTriangulation/Algorithm/monotone.h \
+		../PolygonTriangulation/Algorithm/origin.h \
+		../PolygonTriangulation/Algorithm/HalfEdgeList.h \
+		../PolygonTriangulation/Algorithm/DCELHalfEdge.h \
+		../PolygonTriangulation/Algorithm/DCELVertex.h \
+		../PolygonTriangulation/Algorithm/FaceList.h \
+		../PolygonTriangulation/Algorithm/DCELFace.h \
+		../PolygonTriangulation/Algorithm/VertexList.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../PolygonTriangulation/mainwindow.cpp
 
 qcustomplot.o: ../PolygonTriangulation/qcustomplot.cpp ../PolygonTriangulation/qcustomplot.h

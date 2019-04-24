@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "Algorithm/triangulate.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -88,6 +89,10 @@ void MainWindow::on_btn_triangulate_clicked()
     polygon.push_back(p);
     drawLines(polygon);
 
+    getPolygon(polygon);
+    split_into_monotone(this);
+    triangulate();
+//    printPolygon(this);
 
 }
 
