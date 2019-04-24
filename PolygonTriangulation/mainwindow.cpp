@@ -91,7 +91,7 @@ void MainWindow::on_btn_triangulate_clicked()
 
     getPolygon(polygon);
     split_into_monotone(this);
-    triangulate();
+//    triangulate();
 //    printPolygon(this);
 
 }

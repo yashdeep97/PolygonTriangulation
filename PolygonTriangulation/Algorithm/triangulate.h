@@ -58,7 +58,7 @@ void triangulate() {
 		}
 		d_itr = d_itr->next;
 	}
-	for (int i = 0; i < pendingDiagonals.size(); i++) {
+    for (unsigned int i = 0; i < pendingDiagonals.size(); i++) {
 		insertDiagonal(pendingDiagonals[i].first, pendingDiagonals[i].second);
 	}
 }

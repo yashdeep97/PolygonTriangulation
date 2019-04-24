@@ -13,7 +13,7 @@ using namespace std;
 #define ANTICLOCKWISE 3 /*!< Macro defined for identifying 3 points that rotate anticlockwise */
 
 /// Global MainWindow object
-MainWindow *window;
+
 
 /**
  * Custom comparator function to arrange vertices in the priority queue.
@@ -104,7 +104,7 @@ void HANDLE_START_VERTEX(dvertex *v) {
 void HANDLE_END_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
-      addLine(v, v->edge->getPrev()->helper, window);
+      //addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
   tree.erase(v->edge->getPrev());
@@ -120,7 +120,7 @@ void HANDLE_SPLIT_VERTEX(dvertex *v) {
     it--;
   }
   dedge *s = *it;
-  addLine(v, s->helper, window);
+ // addLine(v, s->helper, window);
   insertDiagonal(v, s->helper);
   s->helper = v;
   tree.insert(v->edge);
@@ -133,7 +133,7 @@ void HANDLE_SPLIT_VERTEX(dvertex *v) {
 void HANDLE_MERGE_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
-      addLine(v, v->edge->getPrev()->helper, window);
+    //  addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
   tree.erase(v->edge->getPrev());
@@ -145,7 +145,7 @@ void HANDLE_MERGE_VERTEX(dvertex *v) {
   dedge *s = *it;
   if (s->helper)
     if (s->helper->type == MERGE_VERTEX) {
-      addLine(v, s->helper, window);
+   //   addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
     }
   s->helper = v;
@@ -157,7 +157,7 @@ void HANDLE_MERGE_VERTEX(dvertex *v) {
 void HANDLE_REGULAR_VERTEX(dvertex *v) {
   if (below(v, v->edge->twin->origin)) {
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
-      addLine(v, v->edge->getPrev()->helper, window);
+    //  addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
     tree.erase(v->edge->getPrev());
@@ -172,7 +172,7 @@ void HANDLE_REGULAR_VERTEX(dvertex *v) {
     }
     dedge *s = *it;
     if (s->helper->type == MERGE_VERTEX) {
-      addLine(v, s->helper, window);
+      //addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
     }
     s->helper = v;
@@ -182,17 +182,18 @@ void HANDLE_REGULAR_VERTEX(dvertex *v) {
 /**
  * Split into y-montone polygons
  */
-void split_into_monotone(MainWindow *w) {
-  window = w;
+void split_into_monotone() {
+  cout<<"Converting to y-monotone polygon"<<endl;
+  //window = w;
   form_vertex_type();
   dvertex *v = Vertices.head;
-  int i = 0;
   while (v) {
-    if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
-    else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
-    else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
-    else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
-    else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
+      cout<<v->type<<endl;
+//    if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
+//    else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
+//    else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
+//    else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
+//    else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
     v = v->next;
   }
 }

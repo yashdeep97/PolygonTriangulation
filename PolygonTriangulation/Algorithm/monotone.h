@@ -20,7 +20,7 @@ MainWindow *window;
 */
 class func {
 public:
-  bool operator() (DCELHalfEdge* e1, DCELHalfEdge* e2) {
+  bool operator() (dedge* e1, dedge* e2) {
     if(e1->origin->y == e2->origin->y){
       return e1->origin->x > e2->origin->x;
     }
@@ -29,7 +29,7 @@ public:
 };
 
 /// priority queue to store all the vertices.
-set<DCELHalfEdge *, func>tree;
+set<dedge *, func>tree;
 
 int vlen;
 
@@ -37,7 +37,7 @@ int vlen;
  * The idea here is to to get the difference between slopes of 2 lines by assuming a particular direction as a result
  * the result obtained determines the direction of turn of the three points.
  */
-int orientation(DCELVertex* a, DCELVertex* b, DCELVertex* c) {
+int orientation(dvertex* a, dvertex* b, dvertex* c) {
   double dif;
   dif = (b->y - a->y) * (c->x - b->x) - (b->x - a->x) * (c->y - b->y);
   if (dif == 0) {
@@ -53,14 +53,13 @@ int orientation(DCELVertex* a, DCELVertex* b, DCELVertex* c) {
  * Check the relative position of two vertices.
  * (ie. if one is below another) 
  */
-bool below(DCELVertex* v1, DCELVertex* v2) {
+bool below(dvertex* v1, dvertex* v2) {
   if (v1->y != v2->y)
     return v1->y > v2->y;
   else
     return v1->x < v2->x;
 }
-
-bool left_edgeto_vertex(const DCELHalfEdge* e1, const DCELHalfEdge* e2) {
+bool left_edgeto_vertex(const dedge* e1, const dedge* e2) {
   return (e1->origin->y > e2->origin->y) && (e1->origin->x < e2->origin->x);
 }
 
@@ -69,7 +68,7 @@ bool left_edgeto_vertex(const DCELHalfEdge* e1, const DCELHalfEdge* e2) {
  * or a SPLIT_VERTEX or a MERGE_VERTEX or a REGULAR_VERTEX.
  */
 void form_vertex_type() {
-  DCELVertex *v = Vertices.head;
+  dvertex *v = Vertices.head;
   vlen = Vertices.length;
   for (int i = 0; i < vlen; i++) {
     if (below(v, v->edge->twin->origin) && below(v, v->edge->getPrev()->origin)) {
@@ -94,7 +93,7 @@ void form_vertex_type() {
 /**
  * Function For handling START_VERTEX
  */
-void HANDLE_START_VERTEX(DCELVertex *v) {
+void HANDLE_START_VERTEX(dvertex *v) {
   tree.insert(v->edge);
   v->edge->helper = v;
 }
@@ -102,7 +101,7 @@ void HANDLE_START_VERTEX(DCELVertex *v) {
 /**
  * Hepler For Handling END_VERTEX
  */
-void HANDLE_END_VERTEX(DCELVertex *v) {
+void HANDLE_END_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
       addLine(v, v->edge->getPrev()->helper, window);
@@ -114,13 +113,13 @@ void HANDLE_END_VERTEX(DCELVertex *v) {
 /**
  * Hepler For Handling SPLIT_VERTEX
  */
-void HANDLE_SPLIT_VERTEX(DCELVertex *v) {
-  set<DCELHalfEdge *, func>::iterator it;
+void HANDLE_SPLIT_VERTEX(dvertex *v) {
+  set<dedge *, func>::iterator it;
   it = std::lower_bound(tree.begin(), tree.end(), v->edge, left_edgeto_vertex);
   if (it != tree.begin()) {
     it--;
   }
-  DCELHalfEdge *s = *it;
+  dedge *s = *it;
   addLine(v, s->helper, window);
   insertDiagonal(v, s->helper);
   s->helper = v;
@@ -131,19 +130,19 @@ void HANDLE_SPLIT_VERTEX(DCELVertex *v) {
 /**
  * Hepler For Handling MERGE_VERTEX
  */
-void HANDLE_MERGE_VERTEX(DCELVertex *v) {
+void HANDLE_MERGE_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
       addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
   tree.erase(v->edge->getPrev());
-  set<DCELHalfEdge *, func>::iterator it;
+  set<dedge *, func>::iterator it;
   it = std::lower_bound(tree.begin(), tree.end(), v->edge, left_edgeto_vertex);
   if (it != tree.begin()) {
     it--;
   }
-  DCELHalfEdge *s = *it;
+  dedge *s = *it;
   if (s->helper)
     if (s->helper->type == MERGE_VERTEX) {
       addLine(v, s->helper, window);
@@ -152,7 +151,10 @@ void HANDLE_MERGE_VERTEX(DCELVertex *v) {
   s->helper = v;
 }
 
-void HANDLE_REGULAR_VERTEX(DCELVertex *v) {
+/**
+ * Hepler For Handling REGULAR_VERTEX
+ */
+void HANDLE_REGULAR_VERTEX(dvertex *v) {
   if (below(v, v->edge->twin->origin)) {
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
       addLine(v, v->edge->getPrev()->helper, window);
@@ -163,12 +165,12 @@ void HANDLE_REGULAR_VERTEX(DCELVertex *v) {
     v->edge->helper = v;
   }
   else {
-    set<DCELHalfEdge *, func>::iterator it;
+    set<dedge *, func>::iterator it;
     it = std::lower_bound(tree.begin(), tree.end(), v->edge, left_edgeto_vertex);
     if (it != tree.begin()) {
       it--;
     }
-    DCELHalfEdge *s = *it;
+    dedge *s = *it;
     if (s->helper->type == MERGE_VERTEX) {
       addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
@@ -181,16 +183,17 @@ void HANDLE_REGULAR_VERTEX(DCELVertex *v) {
  * Split into y-montone polygons
  */
 void split_into_monotone(MainWindow *w) {
+  cout<<"Converting to y-monotone polygon"<<endl;
   window = w;
   form_vertex_type();
-  DCELVertex *v = Vertices.head;
-  int i = 0;
+  dvertex *v = Vertices.head;
   while (v) {
-    if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
-    else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
-    else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
-    else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
-    else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
+      cout<<v->type<<endl;
+//    if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
+//    else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
+//    else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
+//    else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
+//    else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
     v = v->next;
   }
 }

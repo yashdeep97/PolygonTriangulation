@@ -1,55 +1,55 @@
 #ifndef DCEL_ORIGIN_H
 #define DCEL_ORIGIN_H
 
-#include <iostream>
 #include <bits/stdc++.h>
 #include <typeinfo>
-#include "HalfEdgeList.h"
-#include "VertexList.h"
+#include "dedges.h"
+#include "dvertices.h"
 #include "../mainwindow.h"
 
 using namespace std;
 
 
-VertexList Vertices; //Head of linked-list containing Vertex Collation
-HalfEdgeList Edges; //Head of linked-list containing Edge Collation
-FaceList Faces; //Head of linked-list containing Face Collation
+dvertices Vertices; //Head of linked-list containing Vertex Collation
+dedges Edges; //Head of linked-list containing Edge Collation
+dfaces Faces; //Head of linked-list containing Face Collation
 
 
 //! Extract Data from Input File
 /*! getPolygon is the main extractor function that builds the collations.
  *	Vertices are expected to be received in an anticlockwise order.
  */
-void getPolygon( vector<point> points) {
+void getPolygon(vector<point> points) {
 	double a, b;
-	DCELVertex* firstVertex;
-	// DCELVertex *walker = new DCELVertex();
-	DCELHalfEdge *LaggingTwin = NULL;
-	DCELFace *inner = new DCELFace();
-	DCELFace *outer = new DCELFace();
+	dvertex* firstVertex;
+	// dvertex *d_itr = new dvertex();
+	dedge *LaggingTwin = NULL;
+	dface *inner = new dface();
+	dface *outer = new dface();
 
 	for(unsigned int i = 0; i < points.size(); i++)
 	{
 		a = points[i].x;
 		b = points[i].y;
-		DCELVertex *next = new DCELVertex();
+		dvertex *next = new dvertex();
 		next->setCoords(a, b);
-		DCELHalfEdge *edge = new DCELHalfEdge();
+		dedge *edge = new dedge();
 		edge->origin = next;
 		edge->face = inner;
 		inner->edge = edge;
-		Edges.addToList(edge);
+		Edges.addToEdges(edge);
 		// Lagginin twin is the previous twin added to the edge list.
-		LaggingTwin = Edges.addTwinTo(edge, LaggingTwin);
+		LaggingTwin = Edges.addTwin(edge, LaggingTwin);
 		LaggingTwin->face = outer;
 		outer->edge = LaggingTwin;
 		outer->bordered = false;
 		next->edge = edge;
 		if (!Vertices.length) firstVertex = next;
-		Vertices.addToList(next);
+		Vertices.addToEdges(next);
 	}
-	Faces.addToList(outer);
-	Faces.addToList(inner);
+	
+	Faces.addToEdges(outer);
+	Faces.addToEdges(inner);
 
 	Edges.tail->next = Edges.head;
 	Edges.head->twin->next = Edges.tail->twin;
@@ -57,57 +57,53 @@ void getPolygon( vector<point> points) {
 }
 
 void printPolygon() {
-	cout << "OFF" << endl;
 	cout << Vertices.length << " " << Faces.length() << " 0" << endl;
 	Vertices.echo();
-	DCELFace *walker = Faces.head;
-	DCELHalfEdge *edgeWalker;
-	while (walker) {
-		if (walker->bordered) {
-			edgeWalker = walker->edge;
-			cout << walker->boundaryLength() << " ";
+	dface *d_itr = Faces.head;
+	dedge *edge_itr;
+	while (d_itr) {
+		if (d_itr->bordered) {
+			edge_itr = d_itr->edge;
+			cout << d_itr->boundaryLength() << " ";
 			do {
-				cout << edgeWalker->origin->index << " ";
-				edgeWalker = edgeWalker->next;
-			} while (edgeWalker != walker->edge);
-			// cout << (double)rand() / RAND_MAX << " " << (double)rand() / RAND_MAX << " " << (double)rand() / RAND_MAX;
+				cout << edge_itr->origin->index << " ";
+				edge_itr = edge_itr->next;
+			} while (edge_itr != d_itr->edge);
 			cout << endl;
 		}
-		walker = walker->next;
+		d_itr = d_itr->next;
 	}
 }
 
 /**
  * Find the common face between 2 vertices by iterating over the edges at each vertex.
 */
-DCELFace* getFaceCommonTo(DCELVertex* v1, DCELVertex* v2) {
-	DCELFace* face = NULL;
-	DCELHalfEdge* walker = v1->edge;
-	DCELHalfEdge* twinWalker = v2->edge;
+dface* commonFace(dvertex* v1, dvertex* v2) {
+	dface* face = NULL;
+	dedge* d_itr = v1->edge;
+	dedge* twinWalker = v2->edge;
 	do {
 		do {
-			if (walker->face == twinWalker->face && walker->face->bordered){
-				face = walker->face;
-				break;
-			}
+			if (d_itr->face == twinWalker->face && d_itr->face->bordered)
+			{face = d_itr->face; break;}
 			twinWalker = twinWalker->twin->next;
 		} while (twinWalker != v2->edge);
-		walker = walker->twin->next;
-	} while (walker != v1->edge && !face);
+		d_itr = d_itr->twin->next;
+	} while (d_itr != v1->edge && !face);
 	return face;
 }
 
 /**
  * Check if an edge exists between the 2 vertices.
 */
-bool checkEdge(DCELVertex* v1, DCELVertex* v2) {
-	DCELHalfEdge* walker = v1->edge;
+bool checkEdge(dvertex* v1, dvertex* v2) {
+	dedge* d_itr = v1->edge;
 	do {
-		if (walker->next->origin == v2) {
+		if (d_itr->next->origin == v2) {
 			return true;
 		}
-		walker = walker->twin->next;
-	} while (walker != v1->edge);
+		d_itr = d_itr->twin->next;
+	} while (d_itr != v1->edge);
 	return false;
 }
 
@@ -116,16 +112,36 @@ bool checkEdge(DCELVertex* v1, DCELVertex* v2) {
  * @param v1 : 1st vertex
  * @param v2 : 2nd vertex
 */
-void insertDiagonal(DCELVertex* v1, DCELVertex* v2) {
+void insertDiagonal(dvertex* v1, dvertex* v2) {
 	if (v1 == v2) return;
 	if (checkEdge(v1,v2)) return;
 
-	DCELFace* face = getFaceCommonTo(v1, v2);
+	dface* face = commonFace(v1, v2);
 	if(face) {
-		DCELFace* newSubdivision = Edges.addEdgeBetween(v1, v2, face);
-		Faces.addToList(newSubdivision);
+		dface* newSubdivision = Edges.addEdgeBetween(v1, v2, face);
+		Faces.addToEdges(newSubdivision);
 		Faces.removeFromList(face);
 		delete face;
 	}
 }
+
+/**
+ * Draws an edge in the GUI.
+ * @param v1 : 1st vertex
+ * @param v2 : 2nd vertex
+ * @param w : GUI object
+*/
+void addLine(dvertex *v1, dvertex *v2, MainWindow *w){
+    vector<point> line;
+    point p1;
+    p1.x = v1->x;
+    p1.y = v1->y;
+    point p2;
+    p2.x = v2->x;
+    p2.y = v2->y;
+    line.push_back(p1);
+    line.push_back(p2);
+    w->drawLines(line);
+}
+
 #endif

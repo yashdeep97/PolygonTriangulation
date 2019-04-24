@@ -31,19 +31,16 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     qcustomplot.h \
-    Algorithm/DCELFace.h \
-    Algorithm/DCELHalfEdge.h \
-    Algorithm/DCELVertex.h \
-    Algorithm/FaceList.h \
-    Algorithm/HalfEdgeList.h \
+    Algorithm/dedge.h \
+    Algorithm/dedges.h \
+    Algorithm/dface.h \
+    Algorithm/dfaces.h \
+    Algorithm/dvertex.h \
+    Algorithm/dvertices.h \
     Algorithm/monotone.h \
-    Algorithm/origin.h \
     Algorithm/triangulate.h \
-    Algorithm/VertexList.h
+    Algorithm/origin.h
 
 FORMS += \
         mainwindow.ui
 
-DISTFILES += \
-    Algorithm/input.txt \
-    Algorithm/test.txt

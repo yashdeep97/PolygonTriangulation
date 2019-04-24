@@ -5,7 +5,6 @@
 #include <typeinfo>
 #include "dedges.h"
 #include "dvertices.h"
-#include "../mainwindow.h"
 
 using namespace std;
 
@@ -19,37 +18,42 @@ dfaces Faces; //Head of linked-list containing Face Collation
 /*! getPolygon is the main extractor function that builds the collations.
  *	Vertices are expected to be received in an anticlockwise order.
  */
-void getPolygon(vector<point> points) {
-	double a, b;
+void getPolygon(char const *filename) {
+	double a, b, c;
 	dvertex* firstVertex;
 	// dvertex *d_itr = new dvertex();
 	dedge *LaggingTwin = NULL;
 	dface *inner = new dface();
 	dface *outer = new dface();
+	ifstream in_file;
+	in_file.open(filename);
+	while (in_file.is_open()) {
+		int n, i = 0;
+		in_file >> n;
+		while (in_file >> a >> b >> c) 
+		{
+			dvertex *next = new dvertex();
+			next->setCoords(a, b);
+			dedge *edge = new dedge();
+			edge->origin = next;
+			edge->face = inner;
+			inner->edge = edge;
+			Edges.addToEdges(edge);
+			// Lagginin twin is the previous twin added to the edge list.
+			LaggingTwin = Edges.addTwin(edge, LaggingTwin);
+			LaggingTwin->face = outer;
+			outer->edge = LaggingTwin;
+			outer->bordered = false;
+			next->edge = edge;
+			if (!Vertices.length) firstVertex = next;
+			Vertices.addToEdges(next);
+		}
+		Faces.addToEdges(outer);
+		Faces.addToEdges(inner);
 
-	for(unsigned int i = 0; i < points.size(); i++)
-	{
-		a = points[i].x;
-		b = points[i].y;
-		dvertex *next = new dvertex();
-		next->setCoords(a, b);
-		dedge *edge = new dedge();
-		edge->origin = next;
-		edge->face = inner;
-		inner->edge = edge;
-		Edges.addToEdges(edge);
-		// Lagginin twin is the previous twin added to the edge list.
-		LaggingTwin = Edges.addTwin(edge, LaggingTwin);
-		LaggingTwin->face = outer;
-		outer->edge = LaggingTwin;
-		outer->bordered = false;
-		next->edge = edge;
-		if (!Vertices.length) firstVertex = next;
-		Vertices.addToEdges(next);
+		in_file.close();
 	}
 	
-	Faces.addToEdges(outer);
-	Faces.addToEdges(inner);
 
 	Edges.tail->next = Edges.head;
 	Edges.head->twin->next = Edges.tail->twin;
@@ -124,4 +128,24 @@ void insertDiagonal(dvertex* v1, dvertex* v2) {
 		delete face;
 	}
 }
+
+/**
+ * Draws an edge in the GUI.
+ * @param v1 : 1st vertex
+ * @param v2 : 2nd vertex
+ * @param w : GUI object
+
+void addLine(dvertex *v1, dvertex *v2, MainWindow *w){
+    vector<point> line;
+    point p1;
+    p1.x = v1->x;
+    p1.y = v1->y;
+    point p2;
+    p2.x = v2->x;
+    p2.y = v2->y;
+    line.push_back(p1);
+    line.push_back(p2);
+    w->drawLines(line);
+}
+*/
 #endif
