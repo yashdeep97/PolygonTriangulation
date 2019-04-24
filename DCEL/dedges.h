@@ -1,31 +1,31 @@
-#include "DCELHalfEdge.h"
-#include "DCELVertex.h"
-#include "FaceList.h"
+#include "dedge.h"
+#include "dvertex.h"
+#include "dfaces.h"
 
 
 using namespace std;
-class HalfEdgeList
+class dedges
 {
 public:
-	HalfEdgeList(void);
-	~HalfEdgeList(void);
+	dedges(void);
+	~dedges(void);
 
 	/// head of the Edge list
-	DCELHalfEdge* head;
+	dedge* head;
 
 	/// tail of the Edge list
-	DCELHalfEdge* tail;
+	dedge* tail;
 
 	/// Total number of edges
-	int globalEdgeCount;
+	int num_edges;
 
 	/**
 	 * Add a new edge to list
 	 * @param newEdge : The DCEL half edge to be added to the list
 	*/
-	void addToList(DCELHalfEdge* newEdge);
+	void addToEdges(dedge* newEdge);
 
-	// void removeFromList(DCELHalfEdge* edge);
+	// void removeFromList(dedge* edge);
 
 	/**
 	 * Adds the twin of an edge to the Edge list. Also sets the 
@@ -34,7 +34,7 @@ public:
 	 * @param LaggingTwin : previous twin added to the Edge list.
 	 * @return The twin added to list to be stored into LagingTwin.
 	*/
-	DCELHalfEdge* addTwinTo(DCELHalfEdge* edge, DCELHalfEdge* LaggingTwin);
+	dedge* addTwin(dedge* edge, dedge* LaggingTwin);
 
 	/**
 	 * Add an edge between the given vertices and create 2 subdivisions out of the face.
@@ -43,21 +43,21 @@ public:
 	 * @param face : the new edge is a diagonal of this face.
 	 * @return the 2nd subdivision
 	*/
-	DCELFace* addEdgeBetween(DCELVertex* v1, DCELVertex* v2, DCELFace* face);
+	dface* addEdgeBetween(dvertex* v1, dvertex* v2, dface* face);
 
 };
 
-HalfEdgeList::HalfEdgeList(void) : globalEdgeCount(0), head(NULL), tail(NULL)
+dedges::dedges(void) : num_edges(0), head(NULL), tail(NULL)
 {
 }
 
-HalfEdgeList::~HalfEdgeList(void)
+dedges::~dedges(void)
 {
 }
 
-void HalfEdgeList::addToList(DCELHalfEdge* newEdge)
+void dedges::addToEdges(dedge* newEdge)
 {
-	newEdge->meta = ++globalEdgeCount;
+	newEdge->ID = ++num_edges;
 
 	if (head)
 	{
@@ -70,9 +70,9 @@ void HalfEdgeList::addToList(DCELHalfEdge* newEdge)
 	}
 }
 
-DCELHalfEdge* HalfEdgeList::addTwinTo(DCELHalfEdge* edge, DCELHalfEdge* LaggingTwin) {
-	DCELHalfEdge *twinEdge = new DCELHalfEdge();
-	twinEdge->meta = ++globalEdgeCount;
+dedge* dedges::addTwin(dedge* edge, dedge* LaggingTwin) {
+	dedge *twinEdge = new dedge();
+	twinEdge->ID = ++num_edges;
 	twinEdge->twin = edge;
 	if (LaggingTwin) {
 		LaggingTwin->origin = twinEdge->twin->origin;
@@ -82,7 +82,7 @@ DCELHalfEdge* HalfEdgeList::addTwinTo(DCELHalfEdge* edge, DCELHalfEdge* LaggingT
 	return twinEdge;
 }
 
-// void HalfEdgeList::removeFromList(DCELHalfEdge* edge)
+// void dedges::removeFromList(dedge* edge)
 // {
 // 	edge->getPrev()->next = edge->twin->next;
 // 	edge->twin->getPrev()->next = edge->next;
@@ -90,24 +90,24 @@ DCELHalfEdge* HalfEdgeList::addTwinTo(DCELHalfEdge* edge, DCELHalfEdge* LaggingT
 // 	delete edge;
 // }
 
-DCELFace* HalfEdgeList::addEdgeBetween(DCELVertex* v1, DCELVertex* v2, DCELFace* face)
+dface* dedges::addEdgeBetween(dvertex* v1, dvertex* v2, dface* face)
 {
 	// Get edge that goes to v1.
-	DCELHalfEdge* walker = face->edge;
+	dedge* d_itr = face->edge;
 	while (1) {
-		if (walker->next->origin == v1)
+		if (d_itr->next->origin == v1)
 			break;
-		walker = walker->next;
+		d_itr = d_itr->next;
 	}
 
 	//new edge with v2 as origin
-	DCELHalfEdge* halfEdge = new DCELHalfEdge();
+	dedge* halfEdge = new dedge();
 	halfEdge->origin = v2;
-	halfEdge->meta = ++globalEdgeCount;
-	halfEdge->next = walker->next;
+	halfEdge->ID = ++num_edges;
+	halfEdge->next = d_itr->next;
 	
 	// get edge that goes to v2
-	DCELHalfEdge* twinWalker = face->edge;
+	dedge* twinWalker = face->edge;
 	while (1) {
 		if (twinWalker->next->origin == v2)
 			break;
@@ -115,36 +115,36 @@ DCELFace* HalfEdgeList::addEdgeBetween(DCELVertex* v1, DCELVertex* v2, DCELFace*
 	}
 
 	//twin of the new edge
-	DCELHalfEdge* twinEdge = new DCELHalfEdge();
+	dedge* twinEdge = new dedge();
 	twinEdge->origin = v1;
-	twinEdge->meta = ++globalEdgeCount;
+	twinEdge->ID = ++num_edges;
 	twinEdge->next = twinWalker->next;
 	
 	// set next edges for the new polygon vertices
-	walker->next = twinEdge;
+	d_itr->next = twinEdge;
 	twinWalker->next = halfEdge;
 	
 	halfEdge->twin = twinEdge;
 	twinEdge->twin = halfEdge;
 
 	// create new face for 1st subdivision.
-	DCELFace* firstHalf = new DCELFace();
+	dface* firstHalf = new dface();
 	firstHalf->edge = halfEdge;
-	walker = halfEdge;
+	d_itr = halfEdge;
 	do {
-		walker->face = firstHalf;
-		walker = walker->next;
-	} while(walker != halfEdge);
+		d_itr->face = firstHalf;
+		d_itr = d_itr->next;
+	} while(d_itr != halfEdge);
 
 	// create new face for 2nd subdivision.
-	DCELFace* secHalf = new DCELFace();
+	dface* secHalf = new dface();
 	secHalf->edge = twinEdge;
 	twinEdge->face = secHalf;
-	walker = twinEdge;
+	d_itr = twinEdge;
 	do {
-		walker->face = secHalf;
-		walker = walker->next;
-	} while(walker != twinEdge);
+		d_itr->face = secHalf;
+		d_itr = d_itr->next;
+	} while(d_itr != twinEdge);
 
 	secHalf->next = firstHalf;
 	return secHalf;

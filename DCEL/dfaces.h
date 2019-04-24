@@ -1,23 +1,23 @@
-#include "DCELFace.h"
+#include "dface.h"
 
 using namespace std;
-class FaceList
+class dfaces
 {
 public:
-	FaceList();
-	~FaceList();
+	dfaces();
+	~dfaces();
 
 	/// head of the face list
-	DCELFace* head;
+	dface* head;
 
 	/// tail of he face list
-	DCELFace* tail;
+	dface* tail;
 
 	/**
 	 * Add a set of faces to the list.
 	 * @param newFace : pointer to the face list that has to be inserted.
 	*/
-	void addToList(DCELFace* newFace);
+	void addToEdges(dface* newFace);
 
 	/**
 	 * Returns the length of the face list.
@@ -28,25 +28,25 @@ public:
 	 * Remove the face from the face list
 	 * @param face : face to be deleted.
 	*/
-	void removeFromList(DCELFace* face);
+	void removeFromList(dface* face);
 };
 
-FaceList::FaceList() : head(NULL)
+dfaces::dfaces() : head(NULL)
 {
 }
 
-FaceList::~FaceList()
+dfaces::~dfaces()
 {
 }
 
-void FaceList::addToList(DCELFace* newFace) {
+void dfaces::addToEdges(dface* newFace) {
 	if (head)
 	{
 		tail->next = newFace;
-		// use walker if it is a set of subdivisions to insert all of them and set the tail accoringly.
-		DCELFace *walker = newFace;
-		while (walker->next) walker = walker->next;
-		tail = walker;
+		// use d_itr if it is a set of subdivisions to insert all of them and set the tail accoringly.
+		dface *d_itr = newFace;
+		while (d_itr->next) d_itr = d_itr->next;
+		tail = d_itr;
 	}
 	else {
 		head = newFace;
@@ -55,12 +55,12 @@ void FaceList::addToList(DCELFace* newFace) {
 	}
 }
 
-int FaceList::length() {
+int dfaces::length() {
 	if (head) {
-		DCELFace* walker = head;
+		dface* d_itr = head;
 		int length = 1;
-		while (walker->next) {
-			walker = walker->next;
+		while (d_itr->next) {
+			d_itr = d_itr->next;
 			length++;
 		}
 		return length - 1;
@@ -68,18 +68,18 @@ int FaceList::length() {
 	else return 0;
 }
 
-void FaceList::removeFromList(DCELFace* face) {
+void dfaces::removeFromList(dface* face) {
 	if (face == head) {
 		head = head->next;
 		return;
 	}
-	DCELFace* walker = head;
-	while (walker) {
-		if (walker->next == face)
+	dface* d_itr = head;
+	while (d_itr) {
+		if (d_itr->next == face)
 			break;
-		walker = walker->next;
+		d_itr = d_itr->next;
 	}
-	walker->next = walker->next->next;
+	d_itr->next = d_itr->next->next;
 	return;
 }
 
