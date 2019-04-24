@@ -1,10 +1,10 @@
 using namespace std;
 
-class DCELVertex  
+class dvertex  
 {
 	public:
-		DCELVertex();
-		~DCELVertex();
+		dvertex();
+		~dvertex();
 
 		/// x coordinate of the vertex.
 		double x;
@@ -12,14 +12,14 @@ class DCELVertex
 		double y;
 
 		/// Half edge that has this vertex as the origin.
-		DCELHalfEdge* edge;
+		dedge* edge;
 
 		/**
 		 * Gets the edge which is incident edge for a face.
 		 * @param DCEL face
 		 * @return DCEL edge
 		*/
-		DCELHalfEdge* getEdgeOnFace(DCELFace* face);
+		dedge* getEdgeOnFace(dface* face);
 
 		/**
 		 * Set coordinates for the vertex of DCEL.
@@ -33,36 +33,35 @@ class DCELVertex
 		*/
 		void print();
 
-		/// type of the vertex: start, end, split, etc.
 		int type;
 		int index;
 		
-		DCELVertex* next;
-		DCELVertex* prev;
+		dvertex* next;
+		dvertex* prev;
 };
 
-DCELVertex::DCELVertex(): x(0.0), y(0.0), edge(NULL), prev(NULL), next(NULL), type(0), index(0)
+dvertex::dvertex(): x(0.0), y(0.0), edge(NULL), prev(NULL), next(NULL), type(0), index(0)
 {
 }
-DCELVertex::~DCELVertex()
+dvertex::~dvertex()
 {
 
 }
 
 
-void DCELVertex::setCoords(double a, double b) {
+void dvertex::setCoords(double a, double b) {
 	x = a;
 	y = b;
 }
 
-void DCELVertex::print() {
+void dvertex::print() {
 	cout<<x<<" "<<y<<endl;
 }
 
 
-DCELHalfEdge* DCELVertex::getEdgeOnFace(DCELFace *face)
+dedge* dvertex::getEdgeOnFace(dface *face)
 {
-	DCELHalfEdge *edgeWalker = edge;
+	dedge *edgeWalker = edge;
 	while (edgeWalker->face != face){
 		edgeWalker = edgeWalker->twin->next;
 	}

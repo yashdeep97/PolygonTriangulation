@@ -2,61 +2,61 @@
 using namespace std;
 
 void triangulate() {
-	DCELFace* walker = Faces.head;
-	vector<pair<DCELVertex *, DCELVertex *> > pendingDiagonals;
-	while (walker) {
-		if (walker->boundaryLength() > 3 && walker->bordered) {
-			vector<pair<DCELVertex *, int> >::iterator it;
-			vector<pair<DCELVertex *, int> > list = walker->sortedVertices();
+	dface* d_itr = Faces.head;
+	vector<pair<dvertex *, dvertex *> > pendingDiagonals;
+	while (d_itr) {
+		if (d_itr->boundaryLength() > 3 && d_itr->bordered) {
+			vector<pair<dvertex *, int> >::iterator it;
+			vector<pair<dvertex *, int> > list = d_itr->sortedVertices();
 			(*(list.end() - 1)).second = -1;
-			stack<pair<DCELVertex *, int> > stck;
+			stack<pair<dvertex *, int> > s;
 			it = list.begin();
-			stck.push((*it));
+			s.push((*it));
 			it++;
-			stck.push((*it));
+			s.push((*it));
 			it++;
 			for (; it != list.end(); it++)
 			{
-				if ((*it).second != stck.top().second)  {
-					while (stck.size() > 1) {
-						pendingDiagonals.push_back(make_pair(stck.top().first, (*it).first));
-						stck.pop();
+				if ((*it).second != s.top().second)  {
+					while (s.size() > 1) {
+						pendingDiagonals.push_back(make_pair(s.top().first, (*it).first));
+						s.pop();
 					}
-					stck.pop();
-					stck.push((*(it - 1)));
-					stck.push((*it));
+					s.pop();
+					s.push((*(it - 1)));
+					s.push((*it));
 				}
 				else {
-					pair<DCELVertex *, int> lastPoint;
-					lastPoint = stck.top();
-					stck.pop();
-					while (!stck.empty()) {
+					pair<dvertex *, int> lastPoint;
+					lastPoint = s.top();
+					s.pop();
+					while (!s.empty()) {
 						if ((*it).second == 1) {
-							DCELHalfEdge *edgeWalker = (*it).first->edge;
-							while (edgeWalker->face != walker) edgeWalker = edgeWalker->twin->next;
-							if (orientation(edgeWalker->next->origin, (*it).first, stck.top().first) == CLOCKWISE) {
-								pendingDiagonals.push_back(make_pair(stck.top().first, (*it).first));
-								lastPoint = stck.top();
-								stck.pop();
+							dedge *edgeWalker = (*it).first->edge;
+							while (edgeWalker->face != d_itr) edgeWalker = edgeWalker->twin->next;
+							if (orientation(edgeWalker->next->origin, (*it).first, s.top().first) == CLOCKWISE) {
+								pendingDiagonals.push_back(make_pair(s.top().first, (*it).first));
+								lastPoint = s.top();
+								s.pop();
 							}
 							else break;
 						}
 						else if ((*it).second == -1) {
-							DCELHalfEdge *edgeWalker = (*it).first->getEdgeOnFace(walker);
-							if (orientation(edgeWalker->getPrev()->origin, (*it).first, stck.top().first) == ANTICLOCKWISE) {
-								pendingDiagonals.push_back(make_pair(stck.top().first, (*it).first));
-								lastPoint = stck.top();
-								stck.pop();
+							dedge *edgeWalker = (*it).first->getEdgeOnFace(d_itr);
+							if (orientation(edgeWalker->getPrev()->origin, (*it).first, s.top().first) == ANTICLOCKWISE) {
+								pendingDiagonals.push_back(make_pair(s.top().first, (*it).first));
+								lastPoint = s.top();
+								s.pop();
 							}
 							else break;
 						}
 					}
-					stck.push(lastPoint);
-					stck.push((*it));
+					s.push(lastPoint);
+					s.push((*it));
 				}
 			}
 		}
-		walker = walker->next;
+		d_itr = d_itr->next;
 	}
 	for (int i = 0; i < pendingDiagonals.size(); i++) {
 		insertDiagonal(pendingDiagonals[i].first, pendingDiagonals[i].second);

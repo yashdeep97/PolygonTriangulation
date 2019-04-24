@@ -1,17 +1,17 @@
-class DCELFace
+class dface
 {
 	public:
-		DCELFace();
-		~DCELFace();
+		dface();
+		~dface();
 
 		/// Arbitrary half edge used as the starting point for the face.
-		DCELHalfEdge* edge;
+		dedge* edge;
 
 		/// Whether the border for the face exists.
 		bool bordered;
 
 		/// Next face in the list.
-		DCELFace* next;
+		dface* next;
 
 		/**
 		 * Gives the number of edges that form the boundary.
@@ -27,39 +27,39 @@ class DCELFace
 		 * right part(1).
 		 * @return the vector of sorted vertices.
 		*/
-		vector<pair<DCELVertex *, int> > sortedVertices();
+		vector<pair<dvertex *, int> > sortedVertices();
 };
 
-DCELFace::DCELFace() : edge(NULL), next(NULL), bordered(true)
+dface::dface() : edge(NULL), next(NULL), bordered(true)
 {
 }
 
-DCELFace::~DCELFace() {
+dface::~dface() {
 
 }
 
-int DCELFace::boundaryLength() {
+int dface::boundaryLength() {
 	int length = 0;
-	DCELHalfEdge* walker = edge;
+	dedge* d_itr = edge;
 	do {
-		walker = walker->next;
+		d_itr = d_itr->next;
 		length++;
-	} while (walker != edge);
+	} while (d_itr != edge);
 	return length;
 }
 
-vector<pair<DCELVertex *, int> > DCELFace::sortedVertices() {
-	vector<pair<DCELVertex*, int> > list;
-	DCELVertex* highest = edge->origin;
-	DCELHalfEdge* walker = edge;
-	DCELHalfEdge *left, *right;
+vector<pair<dvertex *, int> > dface::sortedVertices() {
+	vector<pair<dvertex*, int> > list;
+	dvertex* highest = edge->origin;
+	dedge* d_itr = edge;
+	dedge *left, *right;
 
 	do {	
-		if (walker->origin->y > highest->y || (walker->origin->y == highest->y && walker->origin->x < highest->x)) {
-			highest = walker->origin;
+		if (d_itr->origin->y > highest->y || (d_itr->origin->y == highest->y && d_itr->origin->x < highest->x)) {
+			highest = d_itr->origin;
 		}
-		walker = walker->next;	
-	} while (walker != edge);
+		d_itr = d_itr->next;	
+	} while (d_itr != edge);
 	
 	list.push_back(make_pair(highest,0));
 	left = highest->getEdgeOnFace(this)->next;
