@@ -1,6 +1,8 @@
 #include <iostream>
 #include "origin.h"
+
 using namespace std;
+
 #define REGULAR_VERTEX 0
 #define START_VERTEX 1
 #define END_VERTEX 2
@@ -9,6 +11,7 @@ using namespace std;
 #define COLLINEAR 1 /*!< Macro defined for identifying 3 collinear points */
 #define CLOCKWISE 2 /*!< Macro defined for identifying 3 points that rotate clockwise */
 #define ANTICLOCKWISE 3 /*!< Macro defined for identifying 3 points that rotate anticlockwise */
+
 class func {
 public:
   bool operator() (DCELHalfEdge* e1, DCELHalfEdge* e2) {

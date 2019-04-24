@@ -31,6 +31,7 @@ public:
 	*/
 	DCELHalfEdge* getPrev();
 	
+	/// unique ID of the half edge
 	int meta;
 };
 

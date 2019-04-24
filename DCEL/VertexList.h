@@ -6,7 +6,10 @@ public:
 	VertexList(void);
 	~VertexList(void);
 
+	/// Head of the Vertex list
 	DCELVertex* head;
+
+	/// Tail of the Vertex list
 	DCELVertex* tail;
 
 	/**

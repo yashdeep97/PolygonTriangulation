@@ -40,6 +40,7 @@ void getPolygon(char const *filename) {
 			edge->face = inner;
 			inner->edge = edge;
 			Edges.addToList(edge);
+			// Lagginin twin is the previous twin added to the edge list.
 			LaggingTwin = Edges.addTwinTo(edge, LaggingTwin);
 			LaggingTwin->face = outer;
 			outer->edge = LaggingTwin;
