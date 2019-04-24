@@ -33,6 +33,7 @@ class DCELVertex
 		*/
 		void print();
 
+		/// type of the vertex: start, end, split, etc.
 		int type;
 		int index;
 		
