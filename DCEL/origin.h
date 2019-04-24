@@ -5,6 +5,7 @@
 #include <typeinfo>
 #include "dedges.h"
 #include "dvertices.h"
+#include "../mainwindow.h"
 
 using namespace std;
 
@@ -18,41 +19,38 @@ dfaces Faces; //Head of linked-list containing Face Collation
 /*! getPolygon is the main extractor function that builds the collations.
  *	Vertices are expected to be received in an anticlockwise order.
  */
-void getPolygon(char const *filename) {
-	double a, b, c ;
+void getPolygon(vector<point> points) {
+	double a, b;
 	dvertex* firstVertex;
 	// dvertex *d_itr = new dvertex();
 	dedge *LaggingTwin = NULL;
 	dface *inner = new dface();
 	dface *outer = new dface();
-	ifstream in_file;
-	in_file.open(filename);
-	while (in_file.is_open()) {
-		int n, i = 0;
-		in_file >> n;
-		while (in_file >> a >> b >> c) 
-		{
-			dvertex *next = new dvertex();
-			next->setCoords(a, b);
-			dedge *edge = new dedge();
-			edge->origin = next;
-			edge->face = inner;
-			inner->edge = edge;
-			Edges.addToEdges(edge);
-			// Lagginin twin is the previous twin added to the edge list.
-			LaggingTwin = Edges.addTwin(edge, LaggingTwin);
-			LaggingTwin->face = outer;
-			outer->edge = LaggingTwin;
-			outer->bordered = false;
-			next->edge = edge;
-			if (!Vertices.length) firstVertex = next;
-			Vertices.addToEdges(next);
-		}
-		Faces.addToEdges(outer);
-		Faces.addToEdges(inner);
 
-		in_file.close();
+	for(unsigned int i = 0; i < points.size(); i++)
+	{
+		a = points[i].x;
+		b = points[i].y;
+		dvertex *next = new dvertex();
+		next->setCoords(a, b);
+		dedge *edge = new dedge();
+		edge->origin = next;
+		edge->face = inner;
+		inner->edge = edge;
+		Edges.addToEdges(edge);
+		// Lagginin twin is the previous twin added to the edge list.
+		LaggingTwin = Edges.addTwin(edge, LaggingTwin);
+		LaggingTwin->face = outer;
+		outer->edge = LaggingTwin;
+		outer->bordered = false;
+		next->edge = edge;
+		if (!Vertices.length) firstVertex = next;
+		Vertices.addToEdges(next);
 	}
+	
+	Faces.addToEdges(outer);
+	Faces.addToEdges(inner);
+
 	Edges.tail->next = Edges.head;
 	Edges.head->twin->next = Edges.tail->twin;
 	Edges.tail->twin->origin = firstVertex;
@@ -77,6 +75,9 @@ void printPolygon() {
 	}
 }
 
+/**
+ * Find the common face between 2 vertices by iterating over the edges at each vertex.
+*/
 dface* commonFace(dvertex* v1, dvertex* v2) {
 	dface* face = NULL;
 	dedge* d_itr = v1->edge;
@@ -91,6 +92,10 @@ dface* commonFace(dvertex* v1, dvertex* v2) {
 	} while (d_itr != v1->edge && !face);
 	return face;
 }
+
+/**
+ * Check if an edge exists between the 2 vertices.
+*/
 bool checkEdge(dvertex* v1, dvertex* v2) {
 	dedge* d_itr = v1->edge;
 	do {
@@ -101,6 +106,12 @@ bool checkEdge(dvertex* v1, dvertex* v2) {
 	} while (d_itr != v1->edge);
 	return false;
 }
+
+/**
+ * Add edge between the given vertices and divide the face.
+ * @param v1 : 1st vertex
+ * @param v2 : 2nd vertex
+*/
 void insertDiagonal(dvertex* v1, dvertex* v2) {
 	if (v1 == v2) return;
 	if (checkEdge(v1,v2)) return;
