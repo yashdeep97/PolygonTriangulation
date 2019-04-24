@@ -189,11 +189,11 @@ void split_into_monotone() {
   dvertex *v = Vertices.head;
   while (v) {
       cout<<v->type<<endl;
-//    if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
-//    else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
-//    else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
-//    else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
-//    else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
+   if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
+   else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
+   else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
+   else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
+   else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
     v = v->next;
   }
 }

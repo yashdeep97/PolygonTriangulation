@@ -87,12 +87,13 @@ void MainWindow::on_btn_triangulate_clicked()
     p.x = qv_x[0];
     p.y = qv_y[0];
     polygon.push_back(p);
+
     drawLines(polygon);
+    polygon.pop_back();
 
     getPolygon(polygon);
     split_into_monotone(this);
-//    triangulate();
-//    printPolygon(this);
+    triangulate();
 
 }
 

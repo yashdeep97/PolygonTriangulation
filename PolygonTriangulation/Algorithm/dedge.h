@@ -34,8 +34,7 @@ public:
 	int ID;
 };
 
-dedge::dedge() :
-twin(NULL), next(NULL), face(NULL), origin(NULL), ID(0), helper(NULL)
+dedge::dedge() : twin(NULL), next(NULL), face(NULL), origin(NULL), helper(NULL),  ID(0)
 {
 }
 

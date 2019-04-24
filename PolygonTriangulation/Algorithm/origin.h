@@ -2,6 +2,7 @@
 #define DCEL_ORIGIN_H
 
 #include <bits/stdc++.h>
+#include <unistd.h>
 #include <typeinfo>
 #include "dedges.h"
 #include "dvertices.h"
@@ -20,60 +21,43 @@ dfaces Faces; //Head of linked-list containing Face Collation
  *	Vertices are expected to be received in an anticlockwise order.
  */
 void getPolygon(vector<point> points) {
-	double a, b;
+    double a, b;
 	dvertex* firstVertex;
 	// dvertex *d_itr = new dvertex();
 	dedge *LaggingTwin = NULL;
 	dface *inner = new dface();
 	dface *outer = new dface();
+    cout<<"Number of points: "<<points.size()<<endl;
+    for(unsigned int i = 0; i < points.size(); i++)
+    {
+        a = points[i].x;
+        b = points[i].y;
+        dvertex *next = new dvertex();
+        next->setCoords(a, b);
+        dedge *edge = new dedge();
+        edge->origin = next;
+        edge->face = inner;
+        inner->edge = edge;
+        Edges.addToEdges(edge);
+        // Lagginin twin is the previous twin added to the edge list.
+        LaggingTwin = Edges.addTwin(edge, LaggingTwin);
+        LaggingTwin->face = outer;
+        outer->edge = LaggingTwin;
+        outer->bordered = false;
+        next->edge = edge;
+        if (!Vertices.length) firstVertex = next;
+        Vertices.addToEdges(next);
+    }
 
-	for(unsigned int i = 0; i < points.size(); i++)
-	{
-		a = points[i].x;
-		b = points[i].y;
-		dvertex *next = new dvertex();
-		next->setCoords(a, b);
-		dedge *edge = new dedge();
-		edge->origin = next;
-		edge->face = inner;
-		inner->edge = edge;
-		Edges.addToEdges(edge);
-		// Lagginin twin is the previous twin added to the edge list.
-		LaggingTwin = Edges.addTwin(edge, LaggingTwin);
-		LaggingTwin->face = outer;
-		outer->edge = LaggingTwin;
-		outer->bordered = false;
-		next->edge = edge;
-		if (!Vertices.length) firstVertex = next;
-		Vertices.addToEdges(next);
-	}
+    Faces.addToEdges(outer);
+    Faces.addToEdges(inner);
 	
-	Faces.addToEdges(outer);
-	Faces.addToEdges(inner);
-
-	Edges.tail->next = Edges.head;
-	Edges.head->twin->next = Edges.tail->twin;
-	Edges.tail->twin->origin = firstVertex;
+cout<<"Numver of egdes: "<<Edges.num_edges<<endl;
+    Edges.tail->next = Edges.head;
+    Edges.head->twin->next = Edges.tail->twin;
+    Edges.tail->twin->origin = firstVertex;
 }
 
-void printPolygon() {
-	cout << Vertices.length << " " << Faces.length() << " 0" << endl;
-	Vertices.echo();
-	dface *d_itr = Faces.head;
-	dedge *edge_itr;
-	while (d_itr) {
-		if (d_itr->bordered) {
-			edge_itr = d_itr->edge;
-			cout << d_itr->boundaryLength() << " ";
-			do {
-				cout << edge_itr->origin->index << " ";
-				edge_itr = edge_itr->next;
-			} while (edge_itr != d_itr->edge);
-			cout << endl;
-		}
-		d_itr = d_itr->next;
-	}
-}
 
 /**
  * Find the common face between 2 vertices by iterating over the edges at each vertex.
@@ -143,5 +127,4 @@ void addLine(dvertex *v1, dvertex *v2, MainWindow *w){
     line.push_back(p2);
     w->drawLines(line);
 }
-
 #endif

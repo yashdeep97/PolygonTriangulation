@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-	getPolygon("input.txt");
+	getPolygon("test.txt");
 	split_into_monotone();
 	triangulate();
 	printPolygon();

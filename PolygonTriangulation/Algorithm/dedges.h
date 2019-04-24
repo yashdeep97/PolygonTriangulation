@@ -47,7 +47,7 @@ public:
 
 };
 
-dedges::dedges(void) : num_edges(0), head(NULL), tail(NULL)
+dedges::dedges(void) : head(NULL), tail(NULL), num_edges(0)
 {
 }
 
@@ -81,14 +81,6 @@ dedge* dedges::addTwin(dedge* edge, dedge* LaggingTwin) {
 	edge->twin = twinEdge;
 	return twinEdge;
 }
-
-// void dedges::removeFromList(dedge* edge)
-// {
-// 	edge->getPrev()->next = edge->twin->next;
-// 	edge->twin->getPrev()->next = edge->next;
-// 	delete edge->twin;
-// 	delete edge;
-// }
 
 dface* dedges::addEdgeBetween(dvertex* v1, dvertex* v2, dface* face)
 {

@@ -40,7 +40,7 @@ class dvertex
 		dvertex* prev;
 };
 
-dvertex::dvertex(): x(0.0), y(0.0), edge(NULL), prev(NULL), next(NULL), type(0), index(0)
+dvertex::dvertex(): x(0.0), y(0.0), edge(NULL), type(0), index(0), next(NULL), prev(NULL)
 {
 }
 dvertex::~dvertex()

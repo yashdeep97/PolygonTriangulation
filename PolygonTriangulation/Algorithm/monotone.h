@@ -72,10 +72,12 @@ void form_vertex_type() {
   vlen = Vertices.length;
   for (int i = 0; i < vlen; i++) {
     if (below(v, v->edge->twin->origin) && below(v, v->edge->getPrev()->origin)) {
-      if (orientation(v->edge->twin->origin, v, v->edge->getPrev()->origin) == CLOCKWISE)
-        v->type = START_VERTEX; // Interior angle less than 180.
-      else
-        v->type = SPLIT_VERTEX; // Interior angle greater than 180.
+      if (orientation(v->edge->twin->origin, v, v->edge->getPrev()->origin) == CLOCKWISE){
+            v->type = START_VERTEX; // Interior angle less than 180.
+      }
+      else{
+          v->type = SPLIT_VERTEX; // Interior angle greater than 180.
+      }
     }
     else if (below(v->edge->twin->origin, v) && below(v->edge->getPrev()->origin, v)) {
       if (orientation(v->edge->twin->origin, v, v->edge->getPrev()->origin) == CLOCKWISE)
@@ -106,6 +108,7 @@ void HANDLE_END_VERTEX(dvertex *v) {
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
       addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
+      sleep(1);
     }
   tree.erase(v->edge->getPrev());
 }
@@ -122,6 +125,7 @@ void HANDLE_SPLIT_VERTEX(dvertex *v) {
   dedge *s = *it;
   addLine(v, s->helper, window);
   insertDiagonal(v, s->helper);
+  sleep(1);
   s->helper = v;
   tree.insert(v->edge);
   v->edge->helper = v;
@@ -135,6 +139,7 @@ void HANDLE_MERGE_VERTEX(dvertex *v) {
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
       addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
+      sleep(1);
     }
   tree.erase(v->edge->getPrev());
   set<dedge *, func>::iterator it;
@@ -147,6 +152,7 @@ void HANDLE_MERGE_VERTEX(dvertex *v) {
     if (s->helper->type == MERGE_VERTEX) {
       addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
+      sleep(1);
     }
   s->helper = v;
 }
@@ -159,6 +165,7 @@ void HANDLE_REGULAR_VERTEX(dvertex *v) {
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
       addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
+      sleep(1);
     }
     tree.erase(v->edge->getPrev());
     tree.insert(v->edge);
@@ -174,6 +181,7 @@ void HANDLE_REGULAR_VERTEX(dvertex *v) {
     if (s->helper->type == MERGE_VERTEX) {
       addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
+      sleep(1);
     }
     s->helper = v;
   }
@@ -188,12 +196,11 @@ void split_into_monotone(MainWindow *w) {
   form_vertex_type();
   dvertex *v = Vertices.head;
   while (v) {
-      cout<<v->type<<endl;
-//    if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
-//    else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
-//    else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
-//    else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
-//    else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
+   if (v->type == START_VERTEX) HANDLE_START_VERTEX(v);
+   else if (v->type == SPLIT_VERTEX) HANDLE_SPLIT_VERTEX(v);
+   else if (v->type == END_VERTEX) HANDLE_END_VERTEX(v);
+   else if (v->type == MERGE_VERTEX) HANDLE_MERGE_VERTEX(v);
+   else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
     v = v->next;
   }
 }

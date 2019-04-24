@@ -30,7 +30,7 @@ class dface
 		vector<pair<dvertex *, int> > sortedVertices();
 };
 
-dface::dface() : edge(NULL), next(NULL), bordered(true)
+dface::dface() : edge(NULL), bordered(true), next(NULL)
 {
 }
 

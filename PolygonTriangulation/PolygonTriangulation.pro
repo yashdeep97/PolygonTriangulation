@@ -38,9 +38,13 @@ HEADERS += \
     Algorithm/dvertex.h \
     Algorithm/dvertices.h \
     Algorithm/monotone.h \
-    Algorithm/triangulate.h \
-    Algorithm/origin.h
+    Algorithm/origin.h \
+    Algorithm/triangulate.h
 
 FORMS += \
         mainwindow.ui
+
+DISTFILES += \
+    Algorithm/test.txt
+
 
