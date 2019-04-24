@@ -104,6 +104,7 @@ void HANDLE_START_VERTEX(dvertex *v) {
 void HANDLE_END_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
+      addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
   tree.erase(v->edge->getPrev());
@@ -119,6 +120,7 @@ void HANDLE_SPLIT_VERTEX(dvertex *v) {
     it--;
   }
   dedge *s = *it;
+  addLine(v, s->helper, window);
   insertDiagonal(v, s->helper);
   s->helper = v;
   tree.insert(v->edge);
@@ -131,6 +133,7 @@ void HANDLE_SPLIT_VERTEX(dvertex *v) {
 void HANDLE_MERGE_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
+      addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
   tree.erase(v->edge->getPrev());
@@ -142,6 +145,7 @@ void HANDLE_MERGE_VERTEX(dvertex *v) {
   dedge *s = *it;
   if (s->helper)
     if (s->helper->type == MERGE_VERTEX) {
+      addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
     }
   s->helper = v;
@@ -153,6 +157,7 @@ void HANDLE_MERGE_VERTEX(dvertex *v) {
 void HANDLE_REGULAR_VERTEX(dvertex *v) {
   if (below(v, v->edge->twin->origin)) {
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
+      addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
     tree.erase(v->edge->getPrev());
@@ -167,6 +172,7 @@ void HANDLE_REGULAR_VERTEX(dvertex *v) {
     }
     dedge *s = *it;
     if (s->helper->type == MERGE_VERTEX) {
+      addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
     }
     s->helper = v;
