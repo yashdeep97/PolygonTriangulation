@@ -12,16 +12,27 @@ using namespace std;
 #define CLOCKWISE 2 /*!< Macro defined for identifying 3 points that rotate clockwise */
 #define ANTICLOCKWISE 3 /*!< Macro defined for identifying 3 points that rotate anticlockwise */
 
+/// Global MainWindow object
+MainWindow *window;
+
+/**
+ * Custom comparator function to arrange vertices in the priority queue.
+*/
 class func {
 public:
   bool operator() (dedge* e1, dedge* e2) {
+    if(e1->origin->y == e2->origin->y){
+      return e1->origin->x > e2->origin->x;
+    }
     return e1->origin->y < e2->origin->y;
   }
 };
+
+/// priority queue to store all the vertices.
 set<dedge *, func>tree;
 
 int vlen;
-//! Orientation
+
 /*! This function is used to calculate orientation of 3 points namely clockwise, anticlockwise and collinear.
  * The idea here is to to get the difference between slopes of 2 lines by assuming a particular direction as a result
  * the result obtained determines the direction of turn of the three points.
@@ -37,10 +48,11 @@ int orientation(dvertex* a, dvertex* b, dvertex* c) {
     return ANTICLOCKWISE;
   }
 }
-//! Bool Check Below
-/*!
- * Check the location of the two DCEL Vertices
- * */
+
+/**
+ * Check the relative position of two vertices.
+ * (ie. if one is below another) 
+ */
 bool below(dvertex* v1, dvertex* v2) {
   if (v1->y != v2->y)
     return v1->y > v2->y;
@@ -51,25 +63,25 @@ bool left_edgeto_vertex(const dedge* e1, const dedge* e2) {
   return (e1->origin->y > e2->origin->y) && (e1->origin->x < e2->origin->x);
 }
 
-//! form_vertex_type
-/*!
- * Check whether START_VERTEX, SPLIT_VERTEX, MERGE_VERTEX, REGULAR_VERTEX
- * */
+/**
+ * Check whether the vertex is a START_VERTEX or a END_VERTEX, 
+ * or a SPLIT_VERTEX or a MERGE_VERTEX or a REGULAR_VERTEX.
+ */
 void form_vertex_type() {
   dvertex *v = Vertices.head;
   vlen = Vertices.length;
   for (int i = 0; i < vlen; i++) {
     if (below(v, v->edge->twin->origin) && below(v, v->edge->getPrev()->origin)) {
       if (orientation(v->edge->twin->origin, v, v->edge->getPrev()->origin) == CLOCKWISE)
-        v->type = START_VERTEX;
+        v->type = START_VERTEX; // Interior angle less than 180.
       else
-        v->type = SPLIT_VERTEX;
+        v->type = SPLIT_VERTEX; // Interior angle greater than 180.
     }
     else if (below(v->edge->twin->origin, v) && below(v->edge->getPrev()->origin, v)) {
       if (orientation(v->edge->twin->origin, v, v->edge->getPrev()->origin) == CLOCKWISE)
-        v->type = END_VERTEX;
+        v->type = END_VERTEX; // Interior angle less than 180.
       else 
-        v->type = MERGE_VERTEX;
+        v->type = MERGE_VERTEX; // Interior angle greater than 180.
     }
     else 
       v->type = REGULAR_VERTEX;
@@ -77,26 +89,30 @@ void form_vertex_type() {
     v = v->next;
   }
 }
-//! form_vertex_type
-/*!
- * Hepler For Handling STart Vertex
- * */
+
+/**
+ * Function For handling START_VERTEX
+ */
 void HANDLE_START_VERTEX(dvertex *v) {
   tree.insert(v->edge);
   v->edge->helper = v;
 }
-//! VERTEX HANDLING
-/*!
- * Hepler For Handling End Vertex
- * */
+
+/**
+ * Hepler For Handling END_VERTEX
+ */
 void HANDLE_END_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
+      addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
   tree.erase(v->edge->getPrev());
 }
 
+/**
+ * Hepler For Handling SPLIT_VERTEX
+ */
 void HANDLE_SPLIT_VERTEX(dvertex *v) {
   set<dedge *, func>::iterator it;
   it = std::lower_bound(tree.begin(), tree.end(), v->edge, left_edgeto_vertex);
@@ -104,15 +120,20 @@ void HANDLE_SPLIT_VERTEX(dvertex *v) {
     it--;
   }
   dedge *s = *it;
+  addLine(v, s->helper, window);
   insertDiagonal(v, s->helper);
   s->helper = v;
   tree.insert(v->edge);
   v->edge->helper = v;
 }
 
+/**
+ * Hepler For Handling MERGE_VERTEX
+ */
 void HANDLE_MERGE_VERTEX(dvertex *v) {
   if (v->edge->getPrev()->helper)
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
+      addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
   tree.erase(v->edge->getPrev());
@@ -124,14 +145,19 @@ void HANDLE_MERGE_VERTEX(dvertex *v) {
   dedge *s = *it;
   if (s->helper)
     if (s->helper->type == MERGE_VERTEX) {
+      addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
     }
   s->helper = v;
 }
 
+/**
+ * Hepler For Handling REGULAR_VERTEX
+ */
 void HANDLE_REGULAR_VERTEX(dvertex *v) {
   if (below(v, v->edge->twin->origin)) {
     if (v->edge->getPrev()->helper->type == MERGE_VERTEX) {
+      addLine(v, v->edge->getPrev()->helper, window);
       insertDiagonal(v, v->edge->getPrev()->helper);
     }
     tree.erase(v->edge->getPrev());
@@ -146,17 +172,18 @@ void HANDLE_REGULAR_VERTEX(dvertex *v) {
     }
     dedge *s = *it;
     if (s->helper->type == MERGE_VERTEX) {
+      addLine(v, s->helper, window);
       insertDiagonal(v, s->helper);
     }
     s->helper = v;
   }
 }
-//! VERTEX HANDLING
-/*!
- * Splitting into montone pieces in the polygon
- *
- * */
-void split_into_monotone() {
+
+/**
+ * Split into y-montone polygons
+ */
+void split_into_monotone(MainWindow *w) {
+  window = w;
   form_vertex_type();
   dvertex *v = Vertices.head;
   int i = 0;
