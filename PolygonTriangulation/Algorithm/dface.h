@@ -1,3 +1,8 @@
+#ifndef DFACE_H
+#define DFACE_H
+
+
+/// Each object of this class represents a DCEL face.
 class dface
 {
 	public:
@@ -77,3 +82,5 @@ vector<pair<dvertex *, int> > dface::sortedVertices() {
 	while(left != right->next );
 	return list;
 }
+
+#endif

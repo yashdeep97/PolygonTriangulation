@@ -143,8 +143,8 @@ DIST          = ../PolygonTriangulation/Algorithm/test.txt \
 		../PolygonTriangulation/Algorithm/dvertex.h \
 		../PolygonTriangulation/Algorithm/dvertices.h \
 		../PolygonTriangulation/Algorithm/monotone.h \
-		../PolygonTriangulation/Algorithm/origin.h \
-		../PolygonTriangulation/Algorithm/triangulate.h ../PolygonTriangulation/main.cpp \
+		../PolygonTriangulation/Algorithm/triangulate.h \
+		../PolygonTriangulation/Algorithm/miscellaneous.h ../PolygonTriangulation/main.cpp \
 		../PolygonTriangulation/mainwindow.cpp \
 		../PolygonTriangulation/qcustomplot.cpp
 QMAKE_TARGET  = PolygonTriangulation
@@ -332,7 +332,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../PolygonTriangulation/mainwindow.h ../PolygonTriangulation/qcustomplot.h ../PolygonTriangulation/Algorithm/dedge.h ../PolygonTriangulation/Algorithm/dedges.h ../PolygonTriangulation/Algorithm/dface.h ../PolygonTriangulation/Algorithm/dfaces.h ../PolygonTriangulation/Algorithm/dvertex.h ../PolygonTriangulation/Algorithm/dvertices.h ../PolygonTriangulation/Algorithm/monotone.h ../PolygonTriangulation/Algorithm/origin.h ../PolygonTriangulation/Algorithm/triangulate.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../PolygonTriangulation/mainwindow.h ../PolygonTriangulation/qcustomplot.h ../PolygonTriangulation/Algorithm/dedge.h ../PolygonTriangulation/Algorithm/dedges.h ../PolygonTriangulation/Algorithm/dface.h ../PolygonTriangulation/Algorithm/dfaces.h ../PolygonTriangulation/Algorithm/dvertex.h ../PolygonTriangulation/Algorithm/dvertices.h ../PolygonTriangulation/Algorithm/monotone.h ../PolygonTriangulation/Algorithm/triangulate.h ../PolygonTriangulation/Algorithm/miscellaneous.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../PolygonTriangulation/main.cpp ../PolygonTriangulation/mainwindow.cpp ../PolygonTriangulation/qcustomplot.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../PolygonTriangulation/mainwindow.ui $(DISTDIR)/
 
@@ -407,7 +407,7 @@ mainwindow.o: ../PolygonTriangulation/mainwindow.cpp ../PolygonTriangulation/mai
 		../PolygonTriangulation/qcustomplot.h \
 		../PolygonTriangulation/Algorithm/triangulate.h \
 		../PolygonTriangulation/Algorithm/monotone.h \
-		../PolygonTriangulation/Algorithm/origin.h \
+		../PolygonTriangulation/Algorithm/miscellaneous.h \
 		../PolygonTriangulation/Algorithm/dedges.h \
 		../PolygonTriangulation/Algorithm/dedge.h \
 		../PolygonTriangulation/Algorithm/dvertex.h \

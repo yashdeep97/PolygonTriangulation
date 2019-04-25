@@ -1,9 +1,14 @@
+#ifndef DEDGES_H
+#define DEDGES_H
+
 #include "dedge.h"
 #include "dvertex.h"
 #include "dfaces.h"
 
 
 using namespace std;
+
+/// This class defines a linked list to store all the edges.
 class dedges
 {
 public:
@@ -142,3 +147,4 @@ dface* dedges::addEdgeBetween(dvertex* v1, dvertex* v2, dface* face)
 	return secHalf;
 }
 
+#endif

@@ -1,5 +1,8 @@
+#ifndef MONOTONE_H
+#define MONOTONE_H
+
 #include <iostream>
-#include "origin.h"
+#include "miscellaneous.h"
 
 using namespace std;
 
@@ -8,9 +11,9 @@ using namespace std;
 #define END_VERTEX 2
 #define MERGE_VERTEX 3
 #define SPLIT_VERTEX 4
-#define COLLINEAR 1 /*!< Macro defined for identifying 3 collinear points */
-#define CLOCKWISE 2 /*!< Macro defined for identifying 3 points that rotate clockwise */
-#define ANTICLOCKWISE 3 /*!< Macro defined for identifying 3 points that rotate anticlockwise */
+#define COLLINEAR 1 
+#define CLOCKWISE 2
+#define ANTICLOCKWISE 3
 
 /// Global MainWindow object
 MainWindow *window;
@@ -191,7 +194,7 @@ void HANDLE_REGULAR_VERTEX(dvertex *v) {
  * Split into y-montone polygons
  */
 void split_into_monotone(MainWindow *w) {
-  cout<<"Converting to y-monotone polygon"<<endl;
+  cout<<"Converting to y-monotone polygons"<<endl;
   window = w;
   form_vertex_type();
   dvertex *v = Vertices.head;
@@ -203,4 +206,7 @@ void split_into_monotone(MainWindow *w) {
    else if (v->type == REGULAR_VERTEX) HANDLE_REGULAR_VERTEX(v);
     v = v->next;
   }
+  cout<<"Finished converting to y-monotone polygons"<<endl;
 }
+
+#endif

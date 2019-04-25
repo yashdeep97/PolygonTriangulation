@@ -1,0 +1,112 @@
+\hypertarget{classTriangulate}{}\doxysection{Triangulate Class Reference}
+\label{classTriangulate}\index{Triangulate@{Triangulate}}
+
+
+Triangulation of y-\/monotone polygons.  
+
+
+
+
+{\ttfamily \#include $<$triangulate.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classTriangulate_a029cce9341f19f9311fe28bcf214f9c7}{triangulate}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Triangulation of y-\/monotone polygons. 
+
+Definition at line 9 of file triangulate.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTriangulate_a029cce9341f19f9311fe28bcf214f9c7}\label{classTriangulate_a029cce9341f19f9311fe28bcf214f9c7}} 
+\index{Triangulate@{Triangulate}!triangulate@{triangulate}}
+\index{triangulate@{triangulate}!Triangulate@{Triangulate}}
+\doxysubsubsection{\texorpdfstring{triangulate()}{triangulate()}}
+{\footnotesize\ttfamily static void Triangulate\+::triangulate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Static function to triangulate y-\/monotone polygons. 
+
+Definition at line 14 of file triangulate.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14                               \{}
+\DoxyCodeLine{15         sleep(2);}
+\DoxyCodeLine{16         cout<<\textcolor{stringliteral}{"Starting Triangulation"}<<endl;}
+\DoxyCodeLine{17         \mbox{\hyperlink{classdface}{dface}}* d\_itr = Faces.\mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}};}
+\DoxyCodeLine{18         vector<pair<dvertex *, dvertex *> > pendingDiagonals;}
+\DoxyCodeLine{19         \textcolor{keywordflow}{while} (d\_itr) \{}
+\DoxyCodeLine{20             \textcolor{keywordflow}{if} (d\_itr-\/>\mbox{\hyperlink{classdface_abb43ba3279a300588dff6ae774dcf682}{boundaryLength}}() > 3 \&\& d\_itr-\/>\mbox{\hyperlink{classdface_a4821a3d9dd2ad25c086d5992b1399921}{bordered}}) \{}
+\DoxyCodeLine{21                 vector<pair<dvertex *, int> >::iterator it;}
+\DoxyCodeLine{22                 vector<pair<dvertex *, int> > list = d\_itr-\/>\mbox{\hyperlink{classdface_a2741d3ec5f9c1fa482099fcf613dd5c4}{sortedVertices}}();}
+\DoxyCodeLine{23                 (*(list.end() -\/ 1)).second = -\/1;}
+\DoxyCodeLine{24                 \textcolor{comment}{// Stack to store vertices during triangulation.}}
+\DoxyCodeLine{25                 stack<pair<dvertex *, int> > s;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27                 it = list.begin();}
+\DoxyCodeLine{28                 s.push((*it));}
+\DoxyCodeLine{29                 it++;}
+\DoxyCodeLine{30                 s.push((*it));}
+\DoxyCodeLine{31                 it++;}
+\DoxyCodeLine{32                 \textcolor{keywordflow}{for} (; it != list.end(); it++)}
+\DoxyCodeLine{33                 \{}
+\DoxyCodeLine{34                     \textcolor{keywordflow}{if} ((*it).second != s.top().second)  \{}
+\DoxyCodeLine{35                         \textcolor{keywordflow}{while} (s.size() > 1) \{}
+\DoxyCodeLine{36                             pendingDiagonals.push\_back(make\_pair(s.top().first, (*it).first));}
+\DoxyCodeLine{37                             s.pop();}
+\DoxyCodeLine{38                         \}}
+\DoxyCodeLine{39                         s.pop();}
+\DoxyCodeLine{40                         s.push((*(it -\/ 1)));}
+\DoxyCodeLine{41                         s.push((*it));}
+\DoxyCodeLine{42                     \}}
+\DoxyCodeLine{43                     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{44                         pair<dvertex *, int> lastPoint;}
+\DoxyCodeLine{45                         lastPoint = s.top();}
+\DoxyCodeLine{46                         s.pop();}
+\DoxyCodeLine{47                         \textcolor{keywordflow}{while} (!s.empty()) \{}
+\DoxyCodeLine{48                             \textcolor{keywordflow}{if} ((*it).second == 1) \{}
+\DoxyCodeLine{49                                 \mbox{\hyperlink{classdedge}{dedge}} *edgeWalker = (*it).first-\/>edge;}
+\DoxyCodeLine{50                                 \textcolor{keywordflow}{while} (edgeWalker-\/>\mbox{\hyperlink{classdedge_a8263e1dd4c4f2002c4ed25731fa24927}{face}} != d\_itr) edgeWalker = edgeWalker-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};}
+\DoxyCodeLine{51                                 \textcolor{keywordflow}{if} (orientation(edgeWalker-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}}-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, (*it).first, s.top().first) == CLOCKWISE) \{}
+\DoxyCodeLine{52                                     pendingDiagonals.push\_back(make\_pair(s.top().first, (*it).first));}
+\DoxyCodeLine{53                                     lastPoint = s.top();}
+\DoxyCodeLine{54                                     s.pop();}
+\DoxyCodeLine{55                                 \}}
+\DoxyCodeLine{56                                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{break};}
+\DoxyCodeLine{57                             \}}
+\DoxyCodeLine{58                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((*it).second == -\/1) \{}
+\DoxyCodeLine{59                                 \mbox{\hyperlink{classdedge}{dedge}} *edgeWalker = (*it).first-\/>getEdgeOnFace(d\_itr);}
+\DoxyCodeLine{60                                 \textcolor{keywordflow}{if} (orientation(edgeWalker-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, (*it).first, s.top().first) == ANTICLOCKWISE) \{}
+\DoxyCodeLine{61                                     pendingDiagonals.push\_back(make\_pair(s.top().first, (*it).first));}
+\DoxyCodeLine{62                                     lastPoint = s.top();}
+\DoxyCodeLine{63                                     s.pop();}
+\DoxyCodeLine{64                                 \}}
+\DoxyCodeLine{65                                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{break};}
+\DoxyCodeLine{66                             \}}
+\DoxyCodeLine{67                         \}}
+\DoxyCodeLine{68                         s.push(lastPoint);}
+\DoxyCodeLine{69                         s.push((*it));}
+\DoxyCodeLine{70                     \}}
+\DoxyCodeLine{71                 \}}
+\DoxyCodeLine{72             \}}
+\DoxyCodeLine{73             d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{74         \}}
+\DoxyCodeLine{75         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < pendingDiagonals.size(); i++) \{}
+\DoxyCodeLine{76             addLine(pendingDiagonals[i].first, pendingDiagonals[i].second, window);}
+\DoxyCodeLine{77             insertDiagonal(pendingDiagonals[i].first, pendingDiagonals[i].second);}
+\DoxyCodeLine{78             sleep(1);}
+\DoxyCodeLine{79         \}}
+\DoxyCodeLine{80     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algorithm/triangulate.\+h\end{DoxyCompactItemize}

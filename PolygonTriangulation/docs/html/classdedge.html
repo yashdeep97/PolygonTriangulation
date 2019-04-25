@@ -70,6 +70,11 @@ $(function() {
 <div class="title">dedge Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Each object of this class represents a DCEL edge.  
+ <a href="classdedge.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="dedge_8h_source.html">dedge.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -104,8 +109,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <tr class="separator:af685c72366c2368dbb40f0eb2b95c40e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dedge_8h_source.html#l00007">7</a> of file <a class="el" href="dedge_8h_source.html">dedge.h</a>.</p>
+<div class="textblock"><p>Each object of this class represents a DCEL edge. </p>
+
+<p class="definition">Definition at line <a class="el" href="dedge_8h_source.html#l00008">8</a> of file <a class="el" href="dedge_8h_source.html">dedge.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a48feff13439ffd2eb0dfd478f2769ff4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a48feff13439ffd2eb0dfd478f2769ff4">&#9670;&nbsp;</a></span>getPrev()</h2>
@@ -123,17 +129,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div><div class="memdoc">
 <p>Get previous edge. </p>
 
-<p class="definition">Definition at line <a class="el" href="dedge_8h_source.html#l00046">46</a> of file <a class="el" href="dedge_8h_source.html">dedge.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classdedge.html">dedge</a>* rval = <a class="code" href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">twin</a>-&gt;<a class="code" href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">next</a>-&gt;<a class="code" href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">twin</a>;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">while</span> (rval-&gt;<a class="code" href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">next</a> != <span class="keyword">this</span>) {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        rval = rval-&gt;<a class="code" href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">next</a>-&gt;<a class="code" href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">twin</a>;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> rval;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="dedge_8h_source.html#l00047">47</a> of file <a class="el" href="dedge_8h_source.html">dedge.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classdedge.html">dedge</a>* rval = <a class="code" href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">twin</a>-&gt;<a class="code" href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">next</a>-&gt;<a class="code" href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">twin</a>;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">while</span> (rval-&gt;<a class="code" href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">next</a> != <span class="keyword">this</span>) {</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        rval = rval-&gt;<a class="code" href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">next</a>-&gt;<a class="code" href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">twin</a>;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> rval;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Algorithm/<a class="el" href="dedge_8h_source.html">dedge.h</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassdedge_html"><div class="ttname"><a href="classdedge.html">dedge</a></div><div class="ttdef"><b>Definition:</b> <a href="dedge_8h_source.html#l00007">dedge.h:7</a></div></div>
-<div class="ttc" id="aclassdedge_html_a0a032b1843d66eb4a036cfb2ba78db70"><div class="ttname"><a href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">dedge::twin</a></div><div class="ttdeci">dedge * twin</div><div class="ttdoc">Twin of the DCEL half edge.</div><div class="ttdef"><b>Definition:</b> <a href="dedge_8h_source.html#l00014">dedge.h:14</a></div></div>
-<div class="ttc" id="aclassdedge_html_ab45c4e6fb767694b6bfcc20a6883630c"><div class="ttname"><a href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">dedge::next</a></div><div class="ttdeci">dedge * next</div><div class="ttdoc">next DCEL half edge</div><div class="ttdef"><b>Definition:</b> <a href="dedge_8h_source.html#l00017">dedge.h:17</a></div></div>
+<div class="ttc" id="aclassdedge_html"><div class="ttname"><a href="classdedge.html">dedge</a></div><div class="ttdoc">Each object of this class represents a DCEL edge.</div><div class="ttdef"><b>Definition:</b> <a href="dedge_8h_source.html#l00008">dedge.h:8</a></div></div>
+<div class="ttc" id="aclassdedge_html_a0a032b1843d66eb4a036cfb2ba78db70"><div class="ttname"><a href="classdedge.html#a0a032b1843d66eb4a036cfb2ba78db70">dedge::twin</a></div><div class="ttdeci">dedge * twin</div><div class="ttdoc">Twin of the DCEL half edge.</div><div class="ttdef"><b>Definition:</b> <a href="dedge_8h_source.html#l00015">dedge.h:15</a></div></div>
+<div class="ttc" id="aclassdedge_html_ab45c4e6fb767694b6bfcc20a6883630c"><div class="ttname"><a href="classdedge.html#ab45c4e6fb767694b6bfcc20a6883630c">dedge::next</a></div><div class="ttdeci">dedge * next</div><div class="ttdoc">next DCEL half edge</div><div class="ttdef"><b>Definition:</b> <a href="dedge_8h_source.html#l00018">dedge.h:18</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

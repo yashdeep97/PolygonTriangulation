@@ -1,5 +1,14 @@
 \hypertarget{classdvertices}{}\doxysection{dvertices Class Reference}
 \label{classdvertices}\index{dvertices@{dvertices}}
+
+
+This class defines a linked list to store all the faces.  
+
+
+
+
+{\ttfamily \#include $<$dvertices.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,9 +31,9 @@ int \mbox{\hyperlink{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}{length}}
 
 
 \doxysubsection{Detailed Description}
+This class defines a linked list to store all the faces. 
 
-
-Definition at line 3 of file dvertices.\+h.
+Definition at line 8 of file dvertices.\+h.
 
 
 
@@ -42,31 +51,31 @@ Add a vertex to the vertex list at the correct position. (List is sorted accordi
 \end{DoxyParams}
 
 
-Definition at line 57 of file dvertices.\+h.
+Definition at line 62 of file dvertices.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{58 \{}
-\DoxyCodeLine{59     \mbox{\hyperlink{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}{length}}++;}
-\DoxyCodeLine{60     \textcolor{keywordflow}{if} ( \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} ) \{}
-\DoxyCodeLine{61         \textcolor{keywordflow}{if} ((\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} < newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}) || (\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} > newVertex-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \{}
-\DoxyCodeLine{62             newVertex-\/>next = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
-\DoxyCodeLine{63             \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} = newVertex;}
-\DoxyCodeLine{64             \textcolor{keywordflow}{return};}
-\DoxyCodeLine{65         \}}
-\DoxyCodeLine{66         \mbox{\hyperlink{classdvertex}{dvertex}}* d\_itr = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
-\DoxyCodeLine{67         \textcolor{keywordflow}{while} (d\_itr-\/>next) \{}
-\DoxyCodeLine{68             \textcolor{keywordflow}{if} ((d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} < newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}) || (d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} > newVertex-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \textcolor{keywordflow}{break};}
-\DoxyCodeLine{69             d\_itr = d\_itr-\/>next;}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64     \mbox{\hyperlink{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}{length}}++;}
+\DoxyCodeLine{65     \textcolor{keywordflow}{if} ( \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} ) \{}
+\DoxyCodeLine{66         \textcolor{keywordflow}{if} ((\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} < newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}) || (\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} > newVertex-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \{}
+\DoxyCodeLine{67             newVertex-\/>next = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{68             \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} = newVertex;}
+\DoxyCodeLine{69             \textcolor{keywordflow}{return};}
 \DoxyCodeLine{70         \}}
-\DoxyCodeLine{71         newVertex-\/>next = d\_itr-\/>next;}
-\DoxyCodeLine{72         d\_itr-\/>next = newVertex;}
-\DoxyCodeLine{73     \}}
-\DoxyCodeLine{74     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{75         \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} = newVertex;}
-\DoxyCodeLine{76         \mbox{\hyperlink{classdvertices_aabaf07897a6d55333216645f57081fd5}{tail}} = newVertex;}
-\DoxyCodeLine{77     \}}
-\DoxyCodeLine{78 \}}
+\DoxyCodeLine{71         \mbox{\hyperlink{classdvertex}{dvertex}}* d\_itr = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{72         \textcolor{keywordflow}{while} (d\_itr-\/>next) \{}
+\DoxyCodeLine{73             \textcolor{keywordflow}{if} ((d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} < newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}) || (d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} > newVertex-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{74             d\_itr = d\_itr-\/>next;}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76         newVertex-\/>next = d\_itr-\/>next;}
+\DoxyCodeLine{77         d\_itr-\/>next = newVertex;}
+\DoxyCodeLine{78     \}}
+\DoxyCodeLine{79     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{80         \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} = newVertex;}
+\DoxyCodeLine{81         \mbox{\hyperlink{classdvertices_aabaf07897a6d55333216645f57081fd5}{tail}} = newVertex;}
+\DoxyCodeLine{82     \}}
+\DoxyCodeLine{83 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classdvertices_a9ca1218e15b49d662b16c0cf0a9142f3}\label{classdvertices_a9ca1218e15b49d662b16c0cf0a9142f3}} 
@@ -84,21 +93,21 @@ Definition at line 57 of file dvertices.\+h.
 \end{DoxyVerb}
  
 
-Definition at line 45 of file dvertices.\+h.
+Definition at line 50 of file dvertices.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{45                      \{}
-\DoxyCodeLine{46     \mbox{\hyperlink{classdvertex}{dvertex}}* d\_itr = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
-\DoxyCodeLine{47     \textcolor{keywordtype}{int} i = 0;}
-\DoxyCodeLine{48     \textcolor{keywordflow}{while} (1) \{}
-\DoxyCodeLine{49         d\_itr-\/>index = i++;}
-\DoxyCodeLine{50         cout << d\_itr-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} << \textcolor{stringliteral}{" "} << d\_itr-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} << \textcolor{stringliteral}{" 0"} << endl;}
-\DoxyCodeLine{51         \textcolor{keywordflow}{if} (d\_itr-\/>next)}
-\DoxyCodeLine{52             d\_itr = d\_itr-\/>next;}
-\DoxyCodeLine{53         \textcolor{keywordflow}{else} \textcolor{keywordflow}{break};}
-\DoxyCodeLine{54     \}}
-\DoxyCodeLine{55 \}}
+\DoxyCodeLine{50                      \{}
+\DoxyCodeLine{51     \mbox{\hyperlink{classdvertex}{dvertex}}* d\_itr = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{52     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{53     \textcolor{keywordflow}{while} (1) \{}
+\DoxyCodeLine{54         d\_itr-\/>index = i++;}
+\DoxyCodeLine{55         cout << d\_itr-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} << \textcolor{stringliteral}{" "} << d\_itr-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} << \textcolor{stringliteral}{" 0"} << endl;}
+\DoxyCodeLine{56         \textcolor{keywordflow}{if} (d\_itr-\/>next)}
+\DoxyCodeLine{57             d\_itr = d\_itr-\/>next;}
+\DoxyCodeLine{58         \textcolor{keywordflow}{else} \textcolor{keywordflow}{break};}
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60 \}}
 
 \end{DoxyCode}
 

@@ -1,5 +1,14 @@
 \hypertarget{classdfaces}{}\doxysection{dfaces Class Reference}
 \label{classdfaces}\index{dfaces@{dfaces}}
+
+
+This class defines a linked list to store all the faces.  
+
+
+
+
+{\ttfamily \#include $<$dfaces.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,9 +30,9 @@ void \mbox{\hyperlink{classdfaces_a0c7dc2adb9b685c06469396b4afa185c}{remove\+Fro
 
 
 \doxysubsection{Detailed Description}
+This class defines a linked list to store all the faces. 
 
-
-Definition at line 4 of file dfaces.\+h.
+Definition at line 9 of file dfaces.\+h.
 
 
 
@@ -41,25 +50,25 @@ Add a set of faces to the list.
 \end{DoxyParams}
 
 
-Definition at line 42 of file dfaces.\+h.
+Definition at line 47 of file dfaces.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{42                                       \{}
-\DoxyCodeLine{43     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}})}
-\DoxyCodeLine{44     \{}
-\DoxyCodeLine{45         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} = newFace;}
-\DoxyCodeLine{46         \textcolor{comment}{// use d\_itr if it is a set of subdivisions to insert all of them and set the tail accoringly.}}
-\DoxyCodeLine{47         \mbox{\hyperlink{classdface}{dface}} *d\_itr = newFace;}
-\DoxyCodeLine{48         \textcolor{keywordflow}{while} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}) d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
-\DoxyCodeLine{49         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}} = d\_itr;}
-\DoxyCodeLine{50     \}}
-\DoxyCodeLine{51     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{52         \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}} = newFace;}
-\DoxyCodeLine{53         \textcolor{comment}{//first element in list is not set of subdivisions, thus no need for the extra steps used above.}}
-\DoxyCodeLine{54         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}} = newFace;}
+\DoxyCodeLine{47                                       \{}
+\DoxyCodeLine{48     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}})}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} = newFace;}
+\DoxyCodeLine{51         \textcolor{comment}{// use d\_itr if it is a set of subdivisions to insert all of them and set the tail accoringly.}}
+\DoxyCodeLine{52         \mbox{\hyperlink{classdface}{dface}} *d\_itr = newFace;}
+\DoxyCodeLine{53         \textcolor{keywordflow}{while} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}) d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{54         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}} = d\_itr;}
 \DoxyCodeLine{55     \}}
-\DoxyCodeLine{56 \}}
+\DoxyCodeLine{56     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{57         \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}} = newFace;}
+\DoxyCodeLine{58         \textcolor{comment}{//first element in list is not set of subdivisions, thus no need for the extra steps used above.}}
+\DoxyCodeLine{59         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}} = newFace;}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classdfaces_a313ad1c1af48230f54fd33ad002122af}\label{classdfaces_a313ad1c1af48230f54fd33ad002122af}} 
@@ -70,22 +79,22 @@ Definition at line 42 of file dfaces.\+h.
 
 Returns the length of the face list. 
 
-Definition at line 58 of file dfaces.\+h.
+Definition at line 63 of file dfaces.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{58                    \{}
-\DoxyCodeLine{59     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}) \{}
-\DoxyCodeLine{60         \mbox{\hyperlink{classdface}{dface}}* d\_itr = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}};}
-\DoxyCodeLine{61         \textcolor{keywordtype}{int} \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}} = 1;}
-\DoxyCodeLine{62         \textcolor{keywordflow}{while} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}) \{}
-\DoxyCodeLine{63             d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
-\DoxyCodeLine{64             \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}}++;}
-\DoxyCodeLine{65         \}}
-\DoxyCodeLine{66         \textcolor{keywordflow}{return} \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}} -\/ 1;}
-\DoxyCodeLine{67     \}}
-\DoxyCodeLine{68     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{69 \}}
+\DoxyCodeLine{63                    \{}
+\DoxyCodeLine{64     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}) \{}
+\DoxyCodeLine{65         \mbox{\hyperlink{classdface}{dface}}* d\_itr = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}};}
+\DoxyCodeLine{66         \textcolor{keywordtype}{int} \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}} = 1;}
+\DoxyCodeLine{67         \textcolor{keywordflow}{while} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}) \{}
+\DoxyCodeLine{68             d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{69             \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}}++;}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71         \textcolor{keywordflow}{return} \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}} -\/ 1;}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{74 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classdfaces_a0c7dc2adb9b685c06469396b4afa185c}\label{classdfaces_a0c7dc2adb9b685c06469396b4afa185c}} 
@@ -101,24 +110,24 @@ Remove the face from the face list
 \end{DoxyParams}
 
 
-Definition at line 71 of file dfaces.\+h.
+Definition at line 76 of file dfaces.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{71                                        \{}
-\DoxyCodeLine{72     \textcolor{keywordflow}{if} (face == \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}) \{}
-\DoxyCodeLine{73         \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}} = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
-\DoxyCodeLine{74         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{75     \}}
-\DoxyCodeLine{76     \mbox{\hyperlink{classdface}{dface}}* d\_itr = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}};}
-\DoxyCodeLine{77     \textcolor{keywordflow}{while} (d\_itr) \{}
-\DoxyCodeLine{78         \textcolor{keywordflow}{if} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} == face)}
-\DoxyCodeLine{79             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{80         d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
-\DoxyCodeLine{81     \}}
-\DoxyCodeLine{82     d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
-\DoxyCodeLine{83     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{84 \}}
+\DoxyCodeLine{76                                        \{}
+\DoxyCodeLine{77     \textcolor{keywordflow}{if} (face == \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}) \{}
+\DoxyCodeLine{78         \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}} = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{79         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{80     \}}
+\DoxyCodeLine{81     \mbox{\hyperlink{classdface}{dface}}* d\_itr = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}};}
+\DoxyCodeLine{82     \textcolor{keywordflow}{while} (d\_itr) \{}
+\DoxyCodeLine{83         \textcolor{keywordflow}{if} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} == face)}
+\DoxyCodeLine{84             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{85         d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87     d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{88     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{89 \}}
 
 \end{DoxyCode}
 

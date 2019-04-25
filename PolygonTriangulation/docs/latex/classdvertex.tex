@@ -1,5 +1,14 @@
 \hypertarget{classdvertex}{}\doxysection{dvertex Class Reference}
 \label{classdvertex}\index{dvertex@{dvertex}}
+
+
+Each object of this class represents a D\+C\+EL vertex.  
+
+
+
+
+{\ttfamily \#include $<$dvertex.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,9 +45,9 @@ int {\bfseries index}
 
 
 \doxysubsection{Detailed Description}
+Each object of this class represents a D\+C\+EL vertex. 
 
-
-Definition at line 3 of file dvertex.\+h.
+Definition at line 7 of file dvertex.\+h.
 
 
 
@@ -59,17 +68,17 @@ D\+C\+EL edge
 \end{DoxyReturn}
 
 
-Definition at line 62 of file dvertex.\+h.
+Definition at line 66 of file dvertex.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{63 \{}
-\DoxyCodeLine{64     \mbox{\hyperlink{classdedge}{dedge}} *edgeWalker = \mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}};}
-\DoxyCodeLine{65     \textcolor{keywordflow}{while} (edgeWalker-\/>\mbox{\hyperlink{classdedge_a8263e1dd4c4f2002c4ed25731fa24927}{face}} != face)\{}
-\DoxyCodeLine{66         edgeWalker = edgeWalker-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};}
-\DoxyCodeLine{67     \}}
-\DoxyCodeLine{68     \textcolor{keywordflow}{return} edgeWalker;}
-\DoxyCodeLine{69 \}}
+\DoxyCodeLine{67 \{}
+\DoxyCodeLine{68     \mbox{\hyperlink{classdedge}{dedge}} *edgeWalker = \mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}};}
+\DoxyCodeLine{69     \textcolor{keywordflow}{while} (edgeWalker-\/>\mbox{\hyperlink{classdedge_a8263e1dd4c4f2002c4ed25731fa24927}{face}} != face)\{}
+\DoxyCodeLine{70         edgeWalker = edgeWalker-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72     \textcolor{keywordflow}{return} edgeWalker;}
+\DoxyCodeLine{73 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classdvertex_ac5a6f72148c4520aeca343ecf4a8a6e5}\label{classdvertex_ac5a6f72148c4520aeca343ecf4a8a6e5}} 
@@ -80,13 +89,13 @@ Definition at line 62 of file dvertex.\+h.
 
 Prints coordinates of the vertex. 
 
-Definition at line 57 of file dvertex.\+h.
+Definition at line 61 of file dvertex.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{57                     \{}
-\DoxyCodeLine{58     cout<<\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}}<<\textcolor{stringliteral}{" "}<<\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}<<endl;}
-\DoxyCodeLine{59 \}}
+\DoxyCodeLine{61                     \{}
+\DoxyCodeLine{62     cout<<\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}}<<\textcolor{stringliteral}{" "}<<\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}<<endl;}
+\DoxyCodeLine{63 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classdvertex_a590d11fd006b64eff1f0ef0f3210bfda}\label{classdvertex_a590d11fd006b64eff1f0ef0f3210bfda}} 
@@ -104,14 +113,14 @@ Set coordinates for the vertex of D\+C\+EL.
 \end{DoxyParams}
 
 
-Definition at line 52 of file dvertex.\+h.
+Definition at line 56 of file dvertex.\+h.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{52                                           \{}
-\DoxyCodeLine{53     \mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} = a;}
-\DoxyCodeLine{54     \mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} = b;}
-\DoxyCodeLine{55 \}}
+\DoxyCodeLine{56                                           \{}
+\DoxyCodeLine{57     \mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} = a;}
+\DoxyCodeLine{58     \mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} = b;}
+\DoxyCodeLine{59 \}}
 
 \end{DoxyCode}
 

@@ -1,9 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
+#ifndef DEDGE_H
+#define DEDGE_H
 
 class dface;
 class dvertex;
 
+/// Each object of this class represents a DCEL edge.
 class dedge  
 {
 public:
@@ -53,3 +54,5 @@ dedge* dedge::getPrev()
 
 	return rval;
 }
+
+#endif

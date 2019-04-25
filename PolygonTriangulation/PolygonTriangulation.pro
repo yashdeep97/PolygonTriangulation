@@ -38,8 +38,8 @@ HEADERS += \
     Algorithm/dvertex.h \
     Algorithm/dvertices.h \
     Algorithm/monotone.h \
-    Algorithm/origin.h \
-    Algorithm/triangulate.h
+    Algorithm/triangulate.h \
+    Algorithm/miscellaneous.h
 
 FORMS += \
         mainwindow.ui

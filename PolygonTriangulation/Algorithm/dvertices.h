@@ -1,5 +1,10 @@
+#ifndef DVERTICES_H
+#define DVERTICES_H
+
 #include <iostream>
 using namespace std;
+
+/// This class defines a linked list to store all the faces.
 class dvertices
 {
 public:
@@ -77,21 +82,4 @@ void dvertices::addToEdges(dvertex* newVertex)
 	}
 }
 
-// void dvertices::removeFromList(dvertex* vertex)
-// {
-// 	length--;
-// 	if (head) {
-// 		dvertex* d_itr = head;
-// 		if (d_itr == vertex) {
-// 			head = d_itr->next;
-// 			delete d_itr;
-// 		}
-// 		while (d_itr->next != vertex && d_itr->next != NULL) {
-// 			d_itr = d_itr->next;
-// 		}
-// 		if (d_itr->next = vertex) {
-// 			d_itr->next = vertex->next;
-// 			delete vertex;
-// 		}
-// 	}
-// }
+#endif

@@ -1,6 +1,11 @@
+#ifndef DFACES_H
+#define DFACES_H
+
 #include "dface.h"
 
 using namespace std;
+
+/// This class defines a linked list to store all the faces.
 class dfaces
 {
 public:
@@ -84,4 +89,4 @@ void dfaces::removeFromList(dface* face) {
 }
 
 
-
+#endif

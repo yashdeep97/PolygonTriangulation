@@ -1,5 +1,9 @@
+#ifndef DVERTEX_H
+#define DVERTEX_H
+
 using namespace std;
 
+/// Each object of this class represents a DCEL vertex.
 class dvertex  
 {
 	public:
@@ -67,3 +71,5 @@ dedge* dvertex::getEdgeOnFace(dface *face)
 	}
 	return edgeWalker;
 }
+
+#endif

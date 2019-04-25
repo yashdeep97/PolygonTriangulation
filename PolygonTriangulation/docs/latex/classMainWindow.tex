@@ -69,14 +69,14 @@ Add a point from the G\+UI to the vectors.
 \end{DoxyParams}
 
 
-Definition at line 32 of file mainwindow.\+cpp.
+Definition at line 33 of file mainwindow.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{33 \{}
-\DoxyCodeLine{34     \mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}.append(x);}
-\DoxyCodeLine{35     qv\_y.append(y);}
-\DoxyCodeLine{36 \}}
+\DoxyCodeLine{34 \{}
+\DoxyCodeLine{35     \mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}.append(x);}
+\DoxyCodeLine{36     qv\_y.append(y);}
+\DoxyCodeLine{37 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}\label{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}} 
@@ -87,14 +87,14 @@ Definition at line 32 of file mainwindow.\+cpp.
 
 Clear the vectors that store the coordinates for the points. 
 
-Definition at line 38 of file mainwindow.\+cpp.
+Definition at line 39 of file mainwindow.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{39 \{}
-\DoxyCodeLine{40     \mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}.clear();}
-\DoxyCodeLine{41     qv\_y.clear();}
-\DoxyCodeLine{42 \}}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     \mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}.clear();}
+\DoxyCodeLine{42     qv\_y.clear();}
+\DoxyCodeLine{43 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classMainWindow_a92b034656579c59b216e8602b56b1e57}\label{classMainWindow_a92b034656579c59b216e8602b56b1e57}} 
@@ -105,14 +105,14 @@ Definition at line 38 of file mainwindow.\+cpp.
 
 Clear all the lines from the G\+UI. 
 
-Definition at line 63 of file mainwindow.\+cpp.
+Definition at line 64 of file mainwindow.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{64 \{}
-\DoxyCodeLine{65     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>clearItems();}
-\DoxyCodeLine{66     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
-\DoxyCodeLine{67 \}}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>clearItems();}
+\DoxyCodeLine{67     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{68 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classMainWindow_a97ea052a1b0972ced1a9f7f1e17dc457}\label{classMainWindow_a97ea052a1b0972ced1a9f7f1e17dc457}} 
@@ -128,15 +128,15 @@ Handles mouse click event
 \end{DoxyParams}
 
 
-Definition at line 69 of file mainwindow.\+cpp.
+Definition at line 70 of file mainwindow.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{70 \{}
-\DoxyCodeLine{71     QPoint \mbox{\hyperlink{structpoint}{point}} = \textcolor{keyword}{event}-\/>pos();}
-\DoxyCodeLine{72     \mbox{\hyperlink{classMainWindow_ae4577821ae42ad81624543b1c1026f5c}{addPoint}}(\mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>xAxis-\/>pixelToCoord(\mbox{\hyperlink{structpoint}{point}}.\mbox{\hyperlink{structpoint_a9c6b34deaf4900ad4193c17935fd384a}{x}}()), \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>yAxis-\/>pixelToCoord(\mbox{\hyperlink{structpoint}{point}}.\mbox{\hyperlink{structpoint_a613f8f0d7352731638b0094e1b958b87}{y}}()));}
-\DoxyCodeLine{73     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
-\DoxyCodeLine{74 \}}
+\DoxyCodeLine{71 \{}
+\DoxyCodeLine{72     QPoint \mbox{\hyperlink{structpoint}{point}} = \textcolor{keyword}{event}-\/>pos();}
+\DoxyCodeLine{73     \mbox{\hyperlink{classMainWindow_ae4577821ae42ad81624543b1c1026f5c}{addPoint}}(\mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>xAxis-\/>pixelToCoord(\mbox{\hyperlink{structpoint}{point}}.\mbox{\hyperlink{structpoint_a9c6b34deaf4900ad4193c17935fd384a}{x}}()), \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>yAxis-\/>pixelToCoord(\mbox{\hyperlink{structpoint}{point}}.\mbox{\hyperlink{structpoint_a613f8f0d7352731638b0094e1b958b87}{y}}()));}
+\DoxyCodeLine{74     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{75 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classMainWindow_a8c6977711bd70eed214572cdeea3366a}\label{classMainWindow_a8c6977711bd70eed214572cdeea3366a}} 
@@ -152,20 +152,20 @@ Draw lines by connecting the points in the points vector serially
 \end{DoxyParams}
 
 
-Definition at line 51 of file mainwindow.\+cpp.
+Definition at line 52 of file mainwindow.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{52 \{}
-\DoxyCodeLine{53     QCPItemLine *line;}
-\DoxyCodeLine{54     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < (points.size() -\/ 1); i++)\{}
-\DoxyCodeLine{55         line= \textcolor{keyword}{new} QCPItemLine(\mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot);}
-\DoxyCodeLine{56         line-\/>start-\/>setCoords(points[i].x, points[i].y);}
-\DoxyCodeLine{57         line-\/>end-\/>setCoords(points[i+1].x, points[i+1].y);}
-\DoxyCodeLine{58         \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>addItem(line);}
-\DoxyCodeLine{59     \}}
-\DoxyCodeLine{60     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
-\DoxyCodeLine{61 \}}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54     QCPItemLine *line;}
+\DoxyCodeLine{55     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < (points.size() -\/ 1); i++)\{}
+\DoxyCodeLine{56         line= \textcolor{keyword}{new} QCPItemLine(\mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot);}
+\DoxyCodeLine{57         line-\/>start-\/>setCoords(points[i].x, points[i].y);}
+\DoxyCodeLine{58         line-\/>end-\/>setCoords(points[i+1].x, points[i+1].y);}
+\DoxyCodeLine{59         \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>addItem(line);}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{62 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classMainWindow_a9194b31ff089de5558754f8071d7394b}\label{classMainWindow_a9194b31ff089de5558754f8071d7394b}} 
@@ -176,15 +176,15 @@ Definition at line 51 of file mainwindow.\+cpp.
 
 Handles click event for Clear button. 
 
-Definition at line 100 of file mainwindow.\+cpp.
+Definition at line 101 of file mainwindow.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{101 \{}
-\DoxyCodeLine{102     \mbox{\hyperlink{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}{clearData}}();}
-\DoxyCodeLine{103     \mbox{\hyperlink{classMainWindow_a92b034656579c59b216e8602b56b1e57}{clearLines}}();}
-\DoxyCodeLine{104     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
-\DoxyCodeLine{105 \}}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103     \mbox{\hyperlink{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}{clearData}}();}
+\DoxyCodeLine{104     \mbox{\hyperlink{classMainWindow_a92b034656579c59b216e8602b56b1e57}{clearLines}}();}
+\DoxyCodeLine{105     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{106 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}\label{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}} 
@@ -195,15 +195,15 @@ Definition at line 100 of file mainwindow.\+cpp.
 
 Plot all the points in the G\+UI. 
 
-Definition at line 44 of file mainwindow.\+cpp.
+Definition at line 45 of file mainwindow.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{45 \{}
-\DoxyCodeLine{46     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>graph(0)-\/>setData(\mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}, qv\_y);}
-\DoxyCodeLine{47     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>replot();}
-\DoxyCodeLine{48     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>update();}
-\DoxyCodeLine{49 \}}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>graph(0)-\/>setData(\mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}, qv\_y);}
+\DoxyCodeLine{48     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>replot();}
+\DoxyCodeLine{49     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>update();}
+\DoxyCodeLine{50 \}}
 
 \end{DoxyCode}
 
