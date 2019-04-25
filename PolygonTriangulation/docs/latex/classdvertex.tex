@@ -1,0 +1,121 @@
+\hypertarget{classdvertex}{}\doxysection{dvertex Class Reference}
+\label{classdvertex}\index{dvertex@{dvertex}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdedge}{dedge}} $\ast$ \mbox{\hyperlink{classdvertex_aa06f4d3e88c98696e02802785e83438a}{get\+Edge\+On\+Face}} (\mbox{\hyperlink{classdface}{dface}} $\ast$face)
+\item 
+void \mbox{\hyperlink{classdvertex_a590d11fd006b64eff1f0ef0f3210bfda}{set\+Coords}} (double a, double b)
+\item 
+void \mbox{\hyperlink{classdvertex_ac5a6f72148c4520aeca343ecf4a8a6e5}{print}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}\label{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}} 
+double \mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}}
+\begin{DoxyCompactList}\small\item\em x coordinate of the vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}\label{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}} 
+double \mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}
+\begin{DoxyCompactList}\small\item\em y coordinate of the vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}\label{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}} 
+\mbox{\hyperlink{classdedge}{dedge}} $\ast$ \mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}
+\begin{DoxyCompactList}\small\item\em Half edge that has this vertex as the origin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdvertex_a64e6bd143dbaa9ef135d86ad336d78ad}\label{classdvertex_a64e6bd143dbaa9ef135d86ad336d78ad}} 
+int {\bfseries type}
+\item 
+\mbox{\Hypertarget{classdvertex_aa13a1337a40d0d9d938f3a597cf116b3}\label{classdvertex_aa13a1337a40d0d9d938f3a597cf116b3}} 
+int {\bfseries index}
+\item 
+\mbox{\Hypertarget{classdvertex_ab1222c1df4e071cd25699d21c8f478db}\label{classdvertex_ab1222c1df4e071cd25699d21c8f478db}} 
+\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$ {\bfseries next}
+\item 
+\mbox{\Hypertarget{classdvertex_a0d063a48094ece41b8d80205cbf1b8a1}\label{classdvertex_a0d063a48094ece41b8d80205cbf1b8a1}} 
+\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$ {\bfseries prev}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 3 of file dvertex.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdvertex_aa06f4d3e88c98696e02802785e83438a}\label{classdvertex_aa06f4d3e88c98696e02802785e83438a}} 
+\index{dvertex@{dvertex}!getEdgeOnFace@{getEdgeOnFace}}
+\index{getEdgeOnFace@{getEdgeOnFace}!dvertex@{dvertex}}
+\doxysubsubsection{\texorpdfstring{getEdgeOnFace()}{getEdgeOnFace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdedge}{dedge}} $\ast$ dvertex\+::get\+Edge\+On\+Face (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdface}{dface}} $\ast$}]{face }\end{DoxyParamCaption})}
+
+Gets the edge which is incident edge for a face. 
+\begin{DoxyParams}{Parameters}
+{\em D\+C\+EL} & face \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+D\+C\+EL edge 
+\end{DoxyReturn}
+
+
+Definition at line 62 of file dvertex.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64     \mbox{\hyperlink{classdedge}{dedge}} *edgeWalker = \mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}};}
+\DoxyCodeLine{65     \textcolor{keywordflow}{while} (edgeWalker-\/>\mbox{\hyperlink{classdedge_a8263e1dd4c4f2002c4ed25731fa24927}{face}} != face)\{}
+\DoxyCodeLine{66         edgeWalker = edgeWalker-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68     \textcolor{keywordflow}{return} edgeWalker;}
+\DoxyCodeLine{69 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classdvertex_ac5a6f72148c4520aeca343ecf4a8a6e5}\label{classdvertex_ac5a6f72148c4520aeca343ecf4a8a6e5}} 
+\index{dvertex@{dvertex}!print@{print}}
+\index{print@{print}!dvertex@{dvertex}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void dvertex\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints coordinates of the vertex. 
+
+Definition at line 57 of file dvertex.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57                     \{}
+\DoxyCodeLine{58     cout<<\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}}<<\textcolor{stringliteral}{" "}<<\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}<<endl;}
+\DoxyCodeLine{59 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classdvertex_a590d11fd006b64eff1f0ef0f3210bfda}\label{classdvertex_a590d11fd006b64eff1f0ef0f3210bfda}} 
+\index{dvertex@{dvertex}!setCoords@{setCoords}}
+\index{setCoords@{setCoords}!dvertex@{dvertex}}
+\doxysubsubsection{\texorpdfstring{setCoords()}{setCoords()}}
+{\footnotesize\ttfamily void dvertex\+::set\+Coords (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b }\end{DoxyParamCaption})}
+
+Set coordinates for the vertex of D\+C\+EL. 
+\begin{DoxyParams}{Parameters}
+{\em a} & \+: x coordinate of vertex \\
+\hline
+{\em b} & \+: y coordinate of vertex \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file dvertex.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52                                           \{}
+\DoxyCodeLine{53     \mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} = a;}
+\DoxyCodeLine{54     \mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} = b;}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algorithm/dvertex.\+h\end{DoxyCompactItemize}

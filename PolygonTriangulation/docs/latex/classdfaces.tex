@@ -1,0 +1,128 @@
+\hypertarget{classdfaces}{}\doxysection{dfaces Class Reference}
+\label{classdfaces}\index{dfaces@{dfaces}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdfaces_a46f9677332a249bf31e958d1f8f8d1b0}{add\+To\+Edges}} (\mbox{\hyperlink{classdface}{dface}} $\ast$new\+Face)
+\item 
+int \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}} ()
+\item 
+void \mbox{\hyperlink{classdfaces_a0c7dc2adb9b685c06469396b4afa185c}{remove\+From\+List}} (\mbox{\hyperlink{classdface}{dface}} $\ast$face)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}\label{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}} 
+\mbox{\hyperlink{classdface}{dface}} $\ast$ \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}
+\begin{DoxyCompactList}\small\item\em head of the face list \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdfaces_a5640bebb58c05f9064e5bce69380bd63}\label{classdfaces_a5640bebb58c05f9064e5bce69380bd63}} 
+\mbox{\hyperlink{classdface}{dface}} $\ast$ \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}}
+\begin{DoxyCompactList}\small\item\em tail of he face list \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 4 of file dfaces.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdfaces_a46f9677332a249bf31e958d1f8f8d1b0}\label{classdfaces_a46f9677332a249bf31e958d1f8f8d1b0}} 
+\index{dfaces@{dfaces}!addToEdges@{addToEdges}}
+\index{addToEdges@{addToEdges}!dfaces@{dfaces}}
+\doxysubsubsection{\texorpdfstring{addToEdges()}{addToEdges()}}
+{\footnotesize\ttfamily void dfaces\+::add\+To\+Edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdface}{dface}} $\ast$}]{new\+Face }\end{DoxyParamCaption})}
+
+Add a set of faces to the list. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Face} & \+: pointer to the face list that has to be inserted. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file dfaces.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42                                       \{}
+\DoxyCodeLine{43     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}})}
+\DoxyCodeLine{44     \{}
+\DoxyCodeLine{45         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} = newFace;}
+\DoxyCodeLine{46         \textcolor{comment}{// use d\_itr if it is a set of subdivisions to insert all of them and set the tail accoringly.}}
+\DoxyCodeLine{47         \mbox{\hyperlink{classdface}{dface}} *d\_itr = newFace;}
+\DoxyCodeLine{48         \textcolor{keywordflow}{while} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}) d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{49         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}} = d\_itr;}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{52         \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}} = newFace;}
+\DoxyCodeLine{53         \textcolor{comment}{//first element in list is not set of subdivisions, thus no need for the extra steps used above.}}
+\DoxyCodeLine{54         \mbox{\hyperlink{classdfaces_a5640bebb58c05f9064e5bce69380bd63}{tail}} = newFace;}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classdfaces_a313ad1c1af48230f54fd33ad002122af}\label{classdfaces_a313ad1c1af48230f54fd33ad002122af}} 
+\index{dfaces@{dfaces}!length@{length}}
+\index{length@{length}!dfaces@{dfaces}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily int dfaces\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the length of the face list. 
+
+Definition at line 58 of file dfaces.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58                    \{}
+\DoxyCodeLine{59     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}) \{}
+\DoxyCodeLine{60         \mbox{\hyperlink{classdface}{dface}}* d\_itr = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}};}
+\DoxyCodeLine{61         \textcolor{keywordtype}{int} \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}} = 1;}
+\DoxyCodeLine{62         \textcolor{keywordflow}{while} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}) \{}
+\DoxyCodeLine{63             d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{64             \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}}++;}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66         \textcolor{keywordflow}{return} \mbox{\hyperlink{classdfaces_a313ad1c1af48230f54fd33ad002122af}{length}} -\/ 1;}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{69 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classdfaces_a0c7dc2adb9b685c06469396b4afa185c}\label{classdfaces_a0c7dc2adb9b685c06469396b4afa185c}} 
+\index{dfaces@{dfaces}!removeFromList@{removeFromList}}
+\index{removeFromList@{removeFromList}!dfaces@{dfaces}}
+\doxysubsubsection{\texorpdfstring{removeFromList()}{removeFromList()}}
+{\footnotesize\ttfamily void dfaces\+::remove\+From\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdface}{dface}} $\ast$}]{face }\end{DoxyParamCaption})}
+
+Remove the face from the face list 
+\begin{DoxyParams}{Parameters}
+{\em face} & \+: face to be deleted. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 71 of file dfaces.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{71                                        \{}
+\DoxyCodeLine{72     \textcolor{keywordflow}{if} (face == \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}) \{}
+\DoxyCodeLine{73         \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}} = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{74         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{75     \}}
+\DoxyCodeLine{76     \mbox{\hyperlink{classdface}{dface}}* d\_itr = \mbox{\hyperlink{classdfaces_a5e1e33dc5510cf7abbfe5eb81853f6e6}{head}};}
+\DoxyCodeLine{77     \textcolor{keywordflow}{while} (d\_itr) \{}
+\DoxyCodeLine{78         \textcolor{keywordflow}{if} (d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} == face)}
+\DoxyCodeLine{79             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{80         d\_itr = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{81     \}}
+\DoxyCodeLine{82     d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}} = d\_itr-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}-\/>\mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}};}
+\DoxyCodeLine{83     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{84 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algorithm/dfaces.\+h\end{DoxyCompactItemize}

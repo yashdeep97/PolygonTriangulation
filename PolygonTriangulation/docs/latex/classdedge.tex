@@ -1,0 +1,66 @@
+\hypertarget{classdedge}{}\doxysection{dedge Class Reference}
+\label{classdedge}\index{dedge@{dedge}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdedge}{dedge}} $\ast$ \mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{get\+Prev}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}\label{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}} 
+\mbox{\hyperlink{classdedge}{dedge}} $\ast$ \mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}
+\begin{DoxyCompactList}\small\item\em Twin of the D\+C\+EL half edge. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}\label{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}} 
+\mbox{\hyperlink{classdedge}{dedge}} $\ast$ \mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}}
+\begin{DoxyCompactList}\small\item\em next D\+C\+EL half edge \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdedge_a8263e1dd4c4f2002c4ed25731fa24927}\label{classdedge_a8263e1dd4c4f2002c4ed25731fa24927}} 
+\mbox{\hyperlink{classdface}{dface}} $\ast$ \mbox{\hyperlink{classdedge_a8263e1dd4c4f2002c4ed25731fa24927}{face}}
+\begin{DoxyCompactList}\small\item\em Face to the left of the edge. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdedge_a09b517c6e5062a4df65f797852403060}\label{classdedge_a09b517c6e5062a4df65f797852403060}} 
+\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$ \mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}
+\begin{DoxyCompactList}\small\item\em origin of the half edge \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}\label{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}} 
+\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$ \mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}
+\begin{DoxyCompactList}\small\item\em helper vertex used in the algorithm to convert polygon to y-\/monotone polygon \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdedge_af685c72366c2368dbb40f0eb2b95c40e}\label{classdedge_af685c72366c2368dbb40f0eb2b95c40e}} 
+int \mbox{\hyperlink{classdedge_af685c72366c2368dbb40f0eb2b95c40e}{ID}}
+\begin{DoxyCompactList}\small\item\em unique ID of the half edge \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 7 of file dedge.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}\label{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}} 
+\index{dedge@{dedge}!getPrev@{getPrev}}
+\index{getPrev@{getPrev}!dedge@{dedge}}
+\doxysubsubsection{\texorpdfstring{getPrev()}{getPrev()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdedge}{dedge}} $\ast$ dedge\+::get\+Prev (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get previous edge. 
+
+Definition at line 46 of file dedge.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48     \mbox{\hyperlink{classdedge}{dedge}}* rval = \mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}}-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}};}
+\DoxyCodeLine{49     }
+\DoxyCodeLine{50     \textcolor{keywordflow}{while} (rval-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}} != \textcolor{keyword}{this}) \{}
+\DoxyCodeLine{51         rval = rval-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}}-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}};}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordflow}{return} rval;}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algorithm/dedge.\+h\end{DoxyCompactItemize}

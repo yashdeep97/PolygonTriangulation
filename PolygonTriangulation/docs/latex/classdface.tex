@@ -1,0 +1,108 @@
+\hypertarget{classdface}{}\doxysection{dface Class Reference}
+\label{classdface}\index{dface@{dface}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classdface_abb43ba3279a300588dff6ae774dcf682}{boundary\+Length}} ()
+\item 
+vector$<$ pair$<$ \mbox{\hyperlink{classdvertex}{dvertex}} $\ast$, int $>$ $>$ \mbox{\hyperlink{classdface_a2741d3ec5f9c1fa482099fcf613dd5c4}{sorted\+Vertices}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdface_a8e1932ce8eed807a15a4c7d0062283b4}\label{classdface_a8e1932ce8eed807a15a4c7d0062283b4}} 
+\mbox{\hyperlink{classdedge}{dedge}} $\ast$ \mbox{\hyperlink{classdface_a8e1932ce8eed807a15a4c7d0062283b4}{edge}}
+\begin{DoxyCompactList}\small\item\em Arbitrary half edge used as the starting point for the face. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdface_a4821a3d9dd2ad25c086d5992b1399921}\label{classdface_a4821a3d9dd2ad25c086d5992b1399921}} 
+bool \mbox{\hyperlink{classdface_a4821a3d9dd2ad25c086d5992b1399921}{bordered}}
+\begin{DoxyCompactList}\small\item\em Whether the border for the face exists. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}\label{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}} 
+\mbox{\hyperlink{classdface}{dface}} $\ast$ \mbox{\hyperlink{classdface_a6f99b54afadf9f647d6d6d418c2cb2ae}{next}}
+\begin{DoxyCompactList}\small\item\em Next face in the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 1 of file dface.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdface_abb43ba3279a300588dff6ae774dcf682}\label{classdface_abb43ba3279a300588dff6ae774dcf682}} 
+\index{dface@{dface}!boundaryLength@{boundaryLength}}
+\index{boundaryLength@{boundaryLength}!dface@{dface}}
+\doxysubsubsection{\texorpdfstring{boundaryLength()}{boundaryLength()}}
+{\footnotesize\ttfamily int dface\+::boundary\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gives the number of edges that form the boundary. \begin{DoxyReturn}{Returns}
+Number of edges 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file dface.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41                           \{}
+\DoxyCodeLine{42     \textcolor{keywordtype}{int} length = 0;}
+\DoxyCodeLine{43     \mbox{\hyperlink{classdedge}{dedge}}* d\_itr = \mbox{\hyperlink{classdface_a8e1932ce8eed807a15a4c7d0062283b4}{edge}};}
+\DoxyCodeLine{44     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{45         d\_itr = d\_itr-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};}
+\DoxyCodeLine{46         length++;}
+\DoxyCodeLine{47     \} \textcolor{keywordflow}{while} (d\_itr != \mbox{\hyperlink{classdface_a8e1932ce8eed807a15a4c7d0062283b4}{edge}});}
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} length;}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classdface_a2741d3ec5f9c1fa482099fcf613dd5c4}\label{classdface_a2741d3ec5f9c1fa482099fcf613dd5c4}} 
+\index{dface@{dface}!sortedVertices@{sortedVertices}}
+\index{sortedVertices@{sortedVertices}!dface@{dface}}
+\doxysubsubsection{\texorpdfstring{sortedVertices()}{sortedVertices()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ \mbox{\hyperlink{classdvertex}{dvertex}} $\ast$, int $>$ $>$ dface\+::sorted\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Splits the polygon into left and right parts. Sorts the vertices according to their y-\/coordinates. The integer in the pair represents whether the vertex is the highest(0), lies in the left part(-\/1) or the right part(1). \begin{DoxyReturn}{Returns}
+the vector of sorted vertices. 
+\end{DoxyReturn}
+
+
+Definition at line 51 of file dface.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51                                                     \{}
+\DoxyCodeLine{52     vector<pair<dvertex*, int> > list;}
+\DoxyCodeLine{53     \mbox{\hyperlink{classdvertex}{dvertex}}* highest = \mbox{\hyperlink{classdface_a8e1932ce8eed807a15a4c7d0062283b4}{edge}}-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}};}
+\DoxyCodeLine{54     \mbox{\hyperlink{classdedge}{dedge}}* d\_itr = \mbox{\hyperlink{classdface_a8e1932ce8eed807a15a4c7d0062283b4}{edge}};}
+\DoxyCodeLine{55     \mbox{\hyperlink{classdedge}{dedge}} *left, *right;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordflow}{do} \{    }
+\DoxyCodeLine{58         \textcolor{keywordflow}{if} (d\_itr-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} > highest-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} || (d\_itr-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == highest-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& d\_itr-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} < highest-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \{}
+\DoxyCodeLine{59             highest = d\_itr-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}};}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61         d\_itr = d\_itr-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};    }
+\DoxyCodeLine{62     \} \textcolor{keywordflow}{while} (d\_itr != \mbox{\hyperlink{classdface_a8e1932ce8eed807a15a4c7d0062283b4}{edge}});}
+\DoxyCodeLine{63     }
+\DoxyCodeLine{64     list.push\_back(make\_pair(highest,0));}
+\DoxyCodeLine{65     left = highest-\/>\mbox{\hyperlink{classdvertex_aa06f4d3e88c98696e02802785e83438a}{getEdgeOnFace}}(\textcolor{keyword}{this})-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};}
+\DoxyCodeLine{66     right = highest-\/>\mbox{\hyperlink{classdvertex_aa06f4d3e88c98696e02802785e83438a}{getEdgeOnFace}}(\textcolor{keyword}{this})-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}();}
+\DoxyCodeLine{67     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{68         \textcolor{keywordflow}{if}(left-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} > right-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} || (left-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == right-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& left-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} < right-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \{}
+\DoxyCodeLine{69             list.push\_back(make\_pair(left-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, -\/1));}
+\DoxyCodeLine{70             left = left-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}};}
+\DoxyCodeLine{71         \}}
+\DoxyCodeLine{72         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{73             list.push\_back(make\_pair(right-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, 1));}
+\DoxyCodeLine{74             right = right-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}();}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77     \textcolor{keywordflow}{while}(left != right-\/>\mbox{\hyperlink{classdedge_ab45c4e6fb767694b6bfcc20a6883630c}{next}} );}
+\DoxyCodeLine{78     \textcolor{keywordflow}{return} list;}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algorithm/dface.\+h\end{DoxyCompactItemize}

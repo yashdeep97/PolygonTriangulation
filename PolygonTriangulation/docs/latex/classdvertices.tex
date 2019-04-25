@@ -1,0 +1,108 @@
+\hypertarget{classdvertices}{}\doxysection{dvertices Class Reference}
+\label{classdvertices}\index{dvertices@{dvertices}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdvertices_a43f3c63335a38e5b64d630bac5b66b07}{add\+To\+Edges}} (\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$new\+Vertex)
+\item 
+void \mbox{\hyperlink{classdvertices_a9ca1218e15b49d662b16c0cf0a9142f3}{echo}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}\label{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}} 
+\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$ \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}
+\begin{DoxyCompactList}\small\item\em Head of the Vertex list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdvertices_aabaf07897a6d55333216645f57081fd5}\label{classdvertices_aabaf07897a6d55333216645f57081fd5}} 
+\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$ \mbox{\hyperlink{classdvertices_aabaf07897a6d55333216645f57081fd5}{tail}}
+\begin{DoxyCompactList}\small\item\em Tail of the Vertex list. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}\label{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}} 
+int \mbox{\hyperlink{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}{length}}
+\begin{DoxyCompactList}\small\item\em Length of the vertex linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 3 of file dvertices.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdvertices_a43f3c63335a38e5b64d630bac5b66b07}\label{classdvertices_a43f3c63335a38e5b64d630bac5b66b07}} 
+\index{dvertices@{dvertices}!addToEdges@{addToEdges}}
+\index{addToEdges@{addToEdges}!dvertices@{dvertices}}
+\doxysubsubsection{\texorpdfstring{addToEdges()}{addToEdges()}}
+{\footnotesize\ttfamily void dvertices\+::add\+To\+Edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{new\+Vertex }\end{DoxyParamCaption})}
+
+Add a vertex to the vertex list at the correct position. (List is sorted according to the y-\/coordiante) 
+\begin{DoxyParams}{Parameters}
+{\em new\+Vertex} & \+: the pointer to the D\+C\+EL vertex that needs to be added to the list. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 57 of file dvertices.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59     \mbox{\hyperlink{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}{length}}++;}
+\DoxyCodeLine{60     \textcolor{keywordflow}{if} ( \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} ) \{}
+\DoxyCodeLine{61         \textcolor{keywordflow}{if} ((\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} < newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}) || (\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}}-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} > newVertex-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \{}
+\DoxyCodeLine{62             newVertex-\/>next = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{63             \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} = newVertex;}
+\DoxyCodeLine{64             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66         \mbox{\hyperlink{classdvertex}{dvertex}}* d\_itr = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{67         \textcolor{keywordflow}{while} (d\_itr-\/>next) \{}
+\DoxyCodeLine{68             \textcolor{keywordflow}{if} ((d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} < newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}}) || (d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} == newVertex-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} \&\& d\_itr-\/>next-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} > newVertex-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}})) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{69             d\_itr = d\_itr-\/>next;}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71         newVertex-\/>next = d\_itr-\/>next;}
+\DoxyCodeLine{72         d\_itr-\/>next = newVertex;}
+\DoxyCodeLine{73     \}}
+\DoxyCodeLine{74     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{75         \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}} = newVertex;}
+\DoxyCodeLine{76         \mbox{\hyperlink{classdvertices_aabaf07897a6d55333216645f57081fd5}{tail}} = newVertex;}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classdvertices_a9ca1218e15b49d662b16c0cf0a9142f3}\label{classdvertices_a9ca1218e15b49d662b16c0cf0a9142f3}} 
+\index{dvertices@{dvertices}!echo@{echo}}
+\index{echo@{echo}!dvertices@{dvertices}}
+\doxysubsubsection{\texorpdfstring{echo()}{echo()}}
+{\footnotesize\ttfamily void dvertices\+::echo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}      Delete a vertex from the vertex list.
+      @param vertex : the pointer to the vertex that must be deleted from the list.
+    &zwj;/
+\end{DoxyVerb}
+ void remove\+From\+List(dvertex$\ast$ vertex); \begin{DoxyVerb}/**
+   Print all the points in the vertex list.
+\end{DoxyVerb}
+ 
+
+Definition at line 45 of file dvertices.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45                      \{}
+\DoxyCodeLine{46     \mbox{\hyperlink{classdvertex}{dvertex}}* d\_itr = \mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{47     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{48     \textcolor{keywordflow}{while} (1) \{}
+\DoxyCodeLine{49         d\_itr-\/>index = i++;}
+\DoxyCodeLine{50         cout << d\_itr-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} << \textcolor{stringliteral}{" "} << d\_itr-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} << \textcolor{stringliteral}{" 0"} << endl;}
+\DoxyCodeLine{51         \textcolor{keywordflow}{if} (d\_itr-\/>next)}
+\DoxyCodeLine{52             d\_itr = d\_itr-\/>next;}
+\DoxyCodeLine{53         \textcolor{keywordflow}{else} \textcolor{keywordflow}{break};}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algorithm/dvertices.\+h\end{DoxyCompactItemize}

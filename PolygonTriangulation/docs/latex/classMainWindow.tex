@@ -1,0 +1,214 @@
+\hypertarget{classMainWindow}{}\doxysection{Main\+Window Class Reference}
+\label{classMainWindow}\index{MainWindow@{MainWindow}}
+Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMainWindow}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}\label{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}} 
+{\bfseries Main\+Window} (Q\+Widget $\ast$parent=0)
+\item 
+void \mbox{\hyperlink{classMainWindow_ae4577821ae42ad81624543b1c1026f5c}{add\+Point}} (double x, double y)
+\item 
+void \mbox{\hyperlink{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}{clear\+Data}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a8c6977711bd70eed214572cdeea3366a}{draw\+Lines}} (std\+::vector$<$ \mbox{\hyperlink{structpoint}{point}} $>$ points)
+\item 
+void \mbox{\hyperlink{classMainWindow_a92b034656579c59b216e8602b56b1e57}{clear\+Lines}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMainWindow_a97ea052a1b0972ced1a9f7f1e17dc457}{clicked\+Graph}} (Q\+Mouse\+Event $\ast$event)
+\item 
+\mbox{\Hypertarget{classMainWindow_a16497b9ef4e5848c27d474845557fe14}\label{classMainWindow_a16497b9ef4e5848c27d474845557fe14}} 
+void {\bfseries on\+\_\+btn\+\_\+triangulate\+\_\+clicked} ()
+\item 
+void \mbox{\hyperlink{classMainWindow_a9194b31ff089de5558754f8071d7394b}{on\+\_\+btn\+\_\+clear\+\_\+clicked}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMainWindow_a35466a70ed47252a0191168126a352a5}\label{classMainWindow_a35466a70ed47252a0191168126a352a5}} 
+Ui\+::\+Main\+Window $\ast$ \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}
+\begin{DoxyCompactList}\small\item\em G\+UI object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}\label{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}} 
+Q\+Vector$<$ double $>$ \mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em Vector of Points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMainWindow_a5d8813f1ebdab64b1840881b7efbc9f3}\label{classMainWindow_a5d8813f1ebdab64b1840881b7efbc9f3}} 
+Q\+Vector$<$ double $>$ {\bfseries qv\+\_\+y}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 22 of file mainwindow.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMainWindow_ae4577821ae42ad81624543b1c1026f5c}\label{classMainWindow_ae4577821ae42ad81624543b1c1026f5c}} 
+\index{MainWindow@{MainWindow}!addPoint@{addPoint}}
+\index{addPoint@{addPoint}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{addPoint()}{addPoint()}}
+{\footnotesize\ttfamily void Main\+Window\+::add\+Point (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+Add a point from the G\+UI to the vectors. 
+\begin{DoxyParams}{Parameters}
+{\em x} & \+: x coordinate \\
+\hline
+{\em y} & \+: y coordinate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 32 of file mainwindow.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34     \mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}.append(x);}
+\DoxyCodeLine{35     qv\_y.append(y);}
+\DoxyCodeLine{36 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}\label{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}} 
+\index{MainWindow@{MainWindow}!clearData@{clearData}}
+\index{clearData@{clearData}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{clearData()}{clearData()}}
+{\footnotesize\ttfamily void Main\+Window\+::clear\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the vectors that store the coordinates for the points. 
+
+Definition at line 38 of file mainwindow.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40     \mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}.clear();}
+\DoxyCodeLine{41     qv\_y.clear();}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMainWindow_a92b034656579c59b216e8602b56b1e57}\label{classMainWindow_a92b034656579c59b216e8602b56b1e57}} 
+\index{MainWindow@{MainWindow}!clearLines@{clearLines}}
+\index{clearLines@{clearLines}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{clearLines()}{clearLines()}}
+{\footnotesize\ttfamily void Main\+Window\+::clear\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear all the lines from the G\+UI. 
+
+Definition at line 63 of file mainwindow.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64 \{}
+\DoxyCodeLine{65     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>clearItems();}
+\DoxyCodeLine{66     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{67 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMainWindow_a97ea052a1b0972ced1a9f7f1e17dc457}\label{classMainWindow_a97ea052a1b0972ced1a9f7f1e17dc457}} 
+\index{MainWindow@{MainWindow}!clickedGraph@{clickedGraph}}
+\index{clickedGraph@{clickedGraph}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{clickedGraph}{clickedGraph}}
+{\footnotesize\ttfamily void Main\+Window\+::clicked\+Graph (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Handles mouse click event 
+\begin{DoxyParams}{Parameters}
+{\em event} & \+: mouse event \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 69 of file mainwindow.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70 \{}
+\DoxyCodeLine{71     QPoint \mbox{\hyperlink{structpoint}{point}} = \textcolor{keyword}{event}-\/>pos();}
+\DoxyCodeLine{72     \mbox{\hyperlink{classMainWindow_ae4577821ae42ad81624543b1c1026f5c}{addPoint}}(\mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>xAxis-\/>pixelToCoord(\mbox{\hyperlink{structpoint}{point}}.\mbox{\hyperlink{structpoint_a9c6b34deaf4900ad4193c17935fd384a}{x}}()), \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>yAxis-\/>pixelToCoord(\mbox{\hyperlink{structpoint}{point}}.\mbox{\hyperlink{structpoint_a613f8f0d7352731638b0094e1b958b87}{y}}()));}
+\DoxyCodeLine{73     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{74 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMainWindow_a8c6977711bd70eed214572cdeea3366a}\label{classMainWindow_a8c6977711bd70eed214572cdeea3366a}} 
+\index{MainWindow@{MainWindow}!drawLines@{drawLines}}
+\index{drawLines@{drawLines}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{drawLines()}{drawLines()}}
+{\footnotesize\ttfamily void Main\+Window\+::draw\+Lines (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structpoint}{point}} $>$}]{points }\end{DoxyParamCaption})}
+
+Draw lines by connecting the points in the points vector serially 
+\begin{DoxyParams}{Parameters}
+{\em points} & \+: vector of points \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 51 of file mainwindow.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     QCPItemLine *line;}
+\DoxyCodeLine{54     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < (points.size() -\/ 1); i++)\{}
+\DoxyCodeLine{55         line= \textcolor{keyword}{new} QCPItemLine(\mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot);}
+\DoxyCodeLine{56         line-\/>start-\/>setCoords(points[i].x, points[i].y);}
+\DoxyCodeLine{57         line-\/>end-\/>setCoords(points[i+1].x, points[i+1].y);}
+\DoxyCodeLine{58         \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>addItem(line);}
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{61 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMainWindow_a9194b31ff089de5558754f8071d7394b}\label{classMainWindow_a9194b31ff089de5558754f8071d7394b}} 
+\index{MainWindow@{MainWindow}!on\_btn\_clear\_clicked@{on\_btn\_clear\_clicked}}
+\index{on\_btn\_clear\_clicked@{on\_btn\_clear\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_btn\_clear\_clicked}{on\_btn\_clear\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+btn\+\_\+clear\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Handles click event for Clear button. 
+
+Definition at line 100 of file mainwindow.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{101 \{}
+\DoxyCodeLine{102     \mbox{\hyperlink{classMainWindow_a7bc9c79f87d393a2021095e8f1276307}{clearData}}();}
+\DoxyCodeLine{103     \mbox{\hyperlink{classMainWindow_a92b034656579c59b216e8602b56b1e57}{clearLines}}();}
+\DoxyCodeLine{104     \mbox{\hyperlink{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}{plot}}();}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}\label{classMainWindow_a415a314d7f9773f30d2ce3a6bd64f010}} 
+\index{MainWindow@{MainWindow}!plot@{plot}}
+\index{plot@{plot}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}}
+{\footnotesize\ttfamily void Main\+Window\+::plot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Plot all the points in the G\+UI. 
+
+Definition at line 44 of file mainwindow.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>graph(0)-\/>setData(\mbox{\hyperlink{classMainWindow_a0db7bf6852ae93300e637480ab1e290a}{qv\_x}}, qv\_y);}
+\DoxyCodeLine{47     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>replot();}
+\DoxyCodeLine{48     \mbox{\hyperlink{classMainWindow_a35466a70ed47252a0191168126a352a5}{ui}}-\/>plot-\/>update();}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

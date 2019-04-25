@@ -1,0 +1,155 @@
+Computational Geometry Assignment 1\hypertarget{index_autotoc_md1}{}\doxysection{Results}\label{index_autotoc_md1}
+We have given an implementation of the Bentley-\/\+Ottmann plane sweep algorithm for line segment intersection.~\newline
+ We randomly generated lines by randomly generating their end points and the ran the algorithm on the lines to find the intersection points.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Number of Lines  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Run Time -\/ Total C\+PU time(s)   }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Number of Lines  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Run Time -\/ Total C\+PU time(s)   }\\\cline{1-2}
+\endhead
+\PBS\centering 2  &\PBS\centering $\sim$0.005   \\\cline{1-2}
+\PBS\centering 10  &\PBS\centering $\sim$0.005   \\\cline{1-2}
+\PBS\centering 50  &\PBS\centering 0.\+011   \\\cline{1-2}
+\PBS\centering 100  &\PBS\centering 0.\+023   \\\cline{1-2}
+\PBS\centering 500  &\PBS\centering 0.\+110   \\\cline{1-2}
+\PBS\centering 1,000  &\PBS\centering 0.\+180   \\\cline{1-2}
+\PBS\centering 5,000  &\PBS\centering 2.\+500   \\\cline{1-2}
+\PBS\centering 10,000  &\PBS\centering 13.\+400   \\\cline{1-2}
+\PBS\centering 20,000  &\PBS\centering 61.\+170   \\\cline{1-2}
+\end{longtabu}
+
+
+The complexity of the Bentley-\/\+Ottmann algorithm is given as {\bfseries{O(nlogn + Ilogn)}} ~\newline
+ where n is the number of line segments and I is the number of intersection points.~\newline
+ The run time observed does not indicate how much the complexity is for each input size, ~\newline
+ but instead we can observe the trend of how the time takes rows as a function of the imput size.~\newline
+ The actual time also depends upon the memory allocation and allotment for vector and tree data~\newline
+ structures.
+
+~\newline
+ \hypertarget{index_autotoc_md2}{}\doxysubsection{Input}\label{index_autotoc_md2}
+
+
+~\newline
+ \hypertarget{index_autotoc_md3}{}\doxysubsection{Output}\label{index_autotoc_md3}
+
+
+~\newline
+ ~\newline
+ \hypertarget{index_autotoc_md4}{}\doxysubsection{An example of the line intersection computation\+:}\label{index_autotoc_md4}
+\hypertarget{index_autotoc_md5}{}\doxysubsubsection{Status Tree Generation}\label{index_autotoc_md5}
+Insertion happens at a given Y -\/ Co-\/ordinate which is 2 for this case.
+\begin{DoxyItemize}
+\item (0,0) (0,2)
+\item (0,0) (2,2)
+\item (0,0) (2,4)
+\item (0,0) (2,6)
+\item (0,0) (2,8)
+\end{DoxyItemize}
+
+Generating the tree\+:
+
+0.\+000000 0.\+000000 2.\+000000 6.\+000000 4
+
+0.\+000000 0.\+000000 0.\+000000 2.\+000000 3
+
+0.\+000000 0.\+000000 0.\+000000 2.\+000000 1
+
+0.\+000000 0.\+000000 2.\+000000 8.\+000000 2
+
+0.\+000000 0.\+000000 2.\+000000 8.\+000000 1
+
+0.\+000000 0.\+000000 2.\+000000 6.\+000000 1
+
+0.\+000000 0.\+000000 2.\+000000 4.\+000000 2
+
+0.\+000000 0.\+000000 2.\+000000 4.\+000000 1
+
+0.\+000000 0.\+000000 2.\+000000 2.\+000000 1
+
+Popping the line (0,0) -\/ (2,6) at Y = 2 yields the tree\+:
+
+0.\+000000 0.\+000000 2.\+000000 4.\+000000 4
+
+0.\+000000 0.\+000000 0.\+000000 2.\+000000 3
+
+0.\+000000 0.\+000000 0.\+000000 2.\+000000 1
+
+0.\+000000 0.\+000000 2.\+000000 8.\+000000 2
+
+0.\+000000 0.\+000000 2.\+000000 8.\+000000 1
+
+0.\+000000 0.\+000000 2.\+000000 2.\+000000 2
+
+0.\+000000 0.\+000000 2.\+000000 4.\+000000 1\hypertarget{index_autotoc_md6}{}\doxysubsubsection{Event Queue Generation}\label{index_autotoc_md6}
+Let the event points be (assuming all upper end points to show the value of U stored)\+:
+
+
+\begin{DoxyItemize}
+\item (1,2)
+\item (2,3)
+\item (3,4)
+\item (3,6)
+\item (3,5)
+\end{DoxyItemize}
+
+Generating the tree\+:
+
+2.\+000000 3.\+000000 3 U\+:2.\+000000 3.\+000000 3.\+000000 4.\+000000
+
+1.\+000000 2.\+000000 1 U\+:1.\+000000 2.\+000000 2.\+000000 1.\+000000
+
+3.\+000000 5.\+000000 2 U\+:3.\+000000 5.\+000000 4.\+000000 3.\+000000
+
+3.\+000000 4.\+000000 1 U\+:3.\+000000 4.\+000000 2.\+000000 3.\+000000
+
+3.\+000000 6.\+000000 1 U\+:3.\+000000 6.\+000000 7.\+000000 4.\+000000
+
+Popping results\+:
+
+Popping event point 3.\+000000,6.\+000000 New Tree\+:
+
+2.\+000000 3.\+000000 3 U\+:2.\+000000 3.\+000000 3.\+000000 4.\+000000
+
+1.\+000000 2.\+000000 1 U\+:1.\+000000 2.\+000000 2.\+000000 1.\+000000
+
+3.\+000000 5.\+000000 2 U\+:3.\+000000 5.\+000000 4.\+000000 3.\+000000
+
+3.\+000000 4.\+000000 1 U\+:3.\+000000 4.\+000000 2.\+000000 3.\+000000\hypertarget{index_autotoc_md7}{}\doxysubsubsection{Main algorithm}\label{index_autotoc_md7}
+For the lines\+:
+
+
+\begin{DoxyItemize}
+\item (1,1) -\/ (11,11)
+\item (1,11) -\/ (11,1)
+\item (1,11) -\/ (11,11)
+\item (11,11) -\/ (11,1)
+\item (11,1) -\/ (1,1)
+\item (1,1) -\/ (1,11)
+\end{DoxyItemize}
+
+Results\+:
+
+Intersection\+: 1.\+000000 11.\+000000
+
+Intersection\+: 11.\+000000 11.\+000000
+
+Intersection\+: 6.\+000000 6.\+000000
+
+Intersection\+: 1.\+000000 1.\+000000
+
+Intersection\+: 11.\+000000 1.\+000000
+
+Execution complete Execution time in secinds\+: 0.\+191\hypertarget{index_autotoc_md8}{}\doxysubsection{Instructions for running the code\+:}\label{index_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Install Qt5 for gui\+:
+\item Install matplotlib for displaying results\+:
+\item compile run.\+cpp
+\item run code\+: bash execute.\+sh 
+\end{DoxyItemize}
