@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['length',['length',['../classdfaces.html#a313ad1c1af48230f54fd33ad002122af',1,'dfaces']]]
+  ['getedgeonface',['getEdgeOnFace',['../classdvertex.html#aa06f4d3e88c98696e02802785e83438a',1,'dvertex']]],
+  ['getprev',['getPrev',['../classdedge.html#a48feff13439ffd2eb0dfd478f2769ff4',1,'dedge']]]
 ];

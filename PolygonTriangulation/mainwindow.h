@@ -15,10 +15,10 @@ struct point
 
 
 namespace Ui {
-/// Class to create GUI and handle events
 class MainWindow;
 }
 
+/// Class to create GUI and handle events
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

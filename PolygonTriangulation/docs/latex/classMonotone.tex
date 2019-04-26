@@ -1,0 +1,295 @@
+\hypertarget{classMonotone}{}\doxysection{Monotone Class Reference}
+\label{classMonotone}\index{Monotone@{Monotone}}
+
+
+Contains methods to convert polygon into y-\/monotone polygons.  
+
+
+
+
+{\ttfamily \#include $<$monotone.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMonotone_a61641a06b3995d495bbe8d794c7e31b3}{split\+\_\+into\+\_\+monotone}} (\mbox{\hyperlink{classMainWindow}{Main\+Window}} $\ast$w)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}{below}} (\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$v1, \mbox{\hyperlink{classdvertex}{dvertex}} $\ast$v2)
+\item 
+void \mbox{\hyperlink{classMonotone_ab4b68d769c23e0afcc3773c6a6f2d432}{form\+\_\+vertex\+\_\+type}} ()
+\item 
+void \mbox{\hyperlink{classMonotone_abc13cb9846d8fd76c148b64a96efd7f8}{H\+A\+N\+D\+L\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+V\+E\+R\+T\+EX}} (\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$v)
+\item 
+void \mbox{\hyperlink{classMonotone_ae2de67e6fc14671eae8708710a3cc27a}{H\+A\+N\+D\+L\+E\+\_\+\+E\+N\+D\+\_\+\+V\+E\+R\+T\+EX}} (\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$v)
+\item 
+void \mbox{\hyperlink{classMonotone_abf529ff878868f5023f9fab362e11b57}{H\+A\+N\+D\+L\+E\+\_\+\+S\+P\+L\+I\+T\+\_\+\+V\+E\+R\+T\+EX}} (\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$v)
+\item 
+void \mbox{\hyperlink{classMonotone_a424a283bc01dbca9761a75c24491e5ed}{H\+A\+N\+D\+L\+E\+\_\+\+M\+E\+R\+G\+E\+\_\+\+V\+E\+R\+T\+EX}} (\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$v)
+\item 
+void \mbox{\hyperlink{classMonotone_ab4eb8f6049e524b146523feada7ae407}{H\+A\+N\+D\+L\+E\+\_\+\+R\+E\+G\+U\+L\+A\+R\+\_\+\+V\+E\+R\+T\+EX}} (\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$v)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMonotone_a9e7c73bdf80bca6ee8776894e5e5a695}\label{classMonotone_a9e7c73bdf80bca6ee8776894e5e5a695}} 
+static bool {\bfseries left\+\_\+edgeto\+\_\+vertex} (const \mbox{\hyperlink{classdedge}{dedge}} $\ast$e1, const \mbox{\hyperlink{classdedge}{dedge}} $\ast$e2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMonotone_ad01172a7beae45b53f52986f90ac966d}\label{classMonotone_ad01172a7beae45b53f52986f90ac966d}} 
+set$<$ \mbox{\hyperlink{classdedge}{dedge}} $\ast$, \mbox{\hyperlink{classfunc}{func}} $>$ \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}
+\begin{DoxyCompactList}\small\item\em priority queue to store all the vertices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMonotone_a22e358c0b40b8a3186ff2e610dda6779}\label{classMonotone_a22e358c0b40b8a3186ff2e610dda6779}} 
+int {\bfseries vlen}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains methods to convert polygon into y-\/monotone polygons. 
+
+Definition at line 32 of file monotone.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}\label{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}} 
+\index{Monotone@{Monotone}!below@{below}}
+\index{below@{below}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{below()}{below()}}
+{\footnotesize\ttfamily bool Monotone\+::below (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{v1,  }\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{v2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Check the relative position of two vertices. (ie. if one is below another) 
+
+Definition at line 44 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44                                        \{}
+\DoxyCodeLine{45     \textcolor{keywordflow}{if} (v1-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} != v2-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}})}
+\DoxyCodeLine{46       \textcolor{keywordflow}{return} v1-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}} > v2-\/>\mbox{\hyperlink{classdvertex_aa1a5b1444ba50a9c21525d48a38c5910}{y}};}
+\DoxyCodeLine{47     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{48       \textcolor{keywordflow}{return} v1-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}} < v2-\/>\mbox{\hyperlink{classdvertex_ab349e4b2d642e3169916c856bbabd7a0}{x}};}
+\DoxyCodeLine{49   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMonotone_ab4b68d769c23e0afcc3773c6a6f2d432}\label{classMonotone_ab4b68d769c23e0afcc3773c6a6f2d432}} 
+\index{Monotone@{Monotone}!form\_vertex\_type@{form\_vertex\_type}}
+\index{form\_vertex\_type@{form\_vertex\_type}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{form\_vertex\_type()}{form\_vertex\_type()}}
+{\footnotesize\ttfamily void Monotone\+::form\+\_\+vertex\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Check whether the vertex is a S\+T\+A\+R\+T\+\_\+\+V\+E\+R\+T\+EX or a E\+N\+D\+\_\+\+V\+E\+R\+T\+EX, or a S\+P\+L\+I\+T\+\_\+\+V\+E\+R\+T\+EX or a M\+E\+R\+G\+E\+\_\+\+V\+E\+R\+T\+EX or a R\+E\+G\+U\+L\+A\+R\+\_\+\+V\+E\+R\+T\+EX. 
+
+Definition at line 58 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58                           \{}
+\DoxyCodeLine{59     \mbox{\hyperlink{classdvertex}{dvertex}} *v = Vertices.\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{60     vlen = Vertices.\mbox{\hyperlink{classdvertices_aa974dbbebe86ffc58eaa116c1e2b011a}{length}};}
+\DoxyCodeLine{61     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < vlen; i++) \{}
+\DoxyCodeLine{62       \textcolor{keywordflow}{if} (\mbox{\hyperlink{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}{below}}(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}) \&\& \mbox{\hyperlink{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}{below}}(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}})) \{}
+\DoxyCodeLine{63         \textcolor{keywordflow}{if} (orientation(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}) == CLOCKWISE)\{}
+\DoxyCodeLine{64               v-\/>type = START\_VERTEX; \textcolor{comment}{// Interior angle less than 180.}}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{67             v-\/>type = SPLIT\_VERTEX; \textcolor{comment}{// Interior angle greater than 180.}}
+\DoxyCodeLine{68         \}}
+\DoxyCodeLine{69       \}}
+\DoxyCodeLine{70       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}{below}}(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, v) \&\& \mbox{\hyperlink{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}{below}}(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, v)) \{}
+\DoxyCodeLine{71         \textcolor{keywordflow}{if} (orientation(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}, v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}}) == CLOCKWISE)}
+\DoxyCodeLine{72           v-\/>type = END\_VERTEX; \textcolor{comment}{// Interior angle less than 180.}}
+\DoxyCodeLine{73         \textcolor{keywordflow}{else} }
+\DoxyCodeLine{74           v-\/>type = MERGE\_VERTEX; \textcolor{comment}{// Interior angle greater than 180.}}
+\DoxyCodeLine{75       \}}
+\DoxyCodeLine{76       \textcolor{keywordflow}{else} }
+\DoxyCodeLine{77         v-\/>type = REGULAR\_VERTEX;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79       v = v-\/>next;}
+\DoxyCodeLine{80     \}}
+\DoxyCodeLine{81   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMonotone_ae2de67e6fc14671eae8708710a3cc27a}\label{classMonotone_ae2de67e6fc14671eae8708710a3cc27a}} 
+\index{Monotone@{Monotone}!HANDLE\_END\_VERTEX@{HANDLE\_END\_VERTEX}}
+\index{HANDLE\_END\_VERTEX@{HANDLE\_END\_VERTEX}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{HANDLE\_END\_VERTEX()}{HANDLE\_END\_VERTEX()}}
+{\footnotesize\ttfamily void Monotone\+::\+H\+A\+N\+D\+L\+E\+\_\+\+E\+N\+D\+\_\+\+V\+E\+R\+T\+EX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Hepler For Handling E\+N\+D\+\_\+\+V\+E\+R\+T\+EX 
+
+Definition at line 94 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{94                                      \{}
+\DoxyCodeLine{95     \textcolor{keywordflow}{if} (v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}})}
+\DoxyCodeLine{96       \textcolor{keywordflow}{if} (v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}-\/>type == MERGE\_VERTEX) \{}
+\DoxyCodeLine{97         addLine(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}, window);}
+\DoxyCodeLine{98         insertDiagonal(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}});}
+\DoxyCodeLine{99         sleep(1);}
+\DoxyCodeLine{100       \}}
+\DoxyCodeLine{101     \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.erase(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}());}
+\DoxyCodeLine{102   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMonotone_a424a283bc01dbca9761a75c24491e5ed}\label{classMonotone_a424a283bc01dbca9761a75c24491e5ed}} 
+\index{Monotone@{Monotone}!HANDLE\_MERGE\_VERTEX@{HANDLE\_MERGE\_VERTEX}}
+\index{HANDLE\_MERGE\_VERTEX@{HANDLE\_MERGE\_VERTEX}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{HANDLE\_MERGE\_VERTEX()}{HANDLE\_MERGE\_VERTEX()}}
+{\footnotesize\ttfamily void Monotone\+::\+H\+A\+N\+D\+L\+E\+\_\+\+M\+E\+R\+G\+E\+\_\+\+V\+E\+R\+T\+EX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Hepler For Handling M\+E\+R\+G\+E\+\_\+\+V\+E\+R\+T\+EX 
+
+Definition at line 125 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{125                                        \{}
+\DoxyCodeLine{126     \textcolor{keywordflow}{if} (v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}})}
+\DoxyCodeLine{127       \textcolor{keywordflow}{if} (v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}-\/>type == MERGE\_VERTEX) \{}
+\DoxyCodeLine{128         addLine(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}, window);}
+\DoxyCodeLine{129         insertDiagonal(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}});}
+\DoxyCodeLine{130         sleep(1);}
+\DoxyCodeLine{131       \}}
+\DoxyCodeLine{132     \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.erase(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}());}
+\DoxyCodeLine{133     set<dedge *, func>::iterator it;}
+\DoxyCodeLine{134     it = std::lower\_bound(\mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.begin(), \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.end(), v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}, left\_edgeto\_vertex);}
+\DoxyCodeLine{135     \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.begin()) \{}
+\DoxyCodeLine{136       it-\/-\/;}
+\DoxyCodeLine{137     \}}
+\DoxyCodeLine{138     \mbox{\hyperlink{classdedge}{dedge}} *s = *it;}
+\DoxyCodeLine{139     \textcolor{keywordflow}{if} (s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}})}
+\DoxyCodeLine{140       \textcolor{keywordflow}{if} (s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}-\/>type == MERGE\_VERTEX) \{}
+\DoxyCodeLine{141         addLine(v, s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}, window);}
+\DoxyCodeLine{142         insertDiagonal(v, s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}});}
+\DoxyCodeLine{143         sleep(1);}
+\DoxyCodeLine{144       \}}
+\DoxyCodeLine{145     s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}} = v;}
+\DoxyCodeLine{146   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMonotone_ab4eb8f6049e524b146523feada7ae407}\label{classMonotone_ab4eb8f6049e524b146523feada7ae407}} 
+\index{Monotone@{Monotone}!HANDLE\_REGULAR\_VERTEX@{HANDLE\_REGULAR\_VERTEX}}
+\index{HANDLE\_REGULAR\_VERTEX@{HANDLE\_REGULAR\_VERTEX}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{HANDLE\_REGULAR\_VERTEX()}{HANDLE\_REGULAR\_VERTEX()}}
+{\footnotesize\ttfamily void Monotone\+::\+H\+A\+N\+D\+L\+E\+\_\+\+R\+E\+G\+U\+L\+A\+R\+\_\+\+V\+E\+R\+T\+EX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Hepler For Handling R\+E\+G\+U\+L\+A\+R\+\_\+\+V\+E\+R\+T\+EX 
+
+Definition at line 151 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{151                                          \{}
+\DoxyCodeLine{152     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classMonotone_ab0867a2c9cff842b22181bcc0c2779cc}{below}}(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a0a032b1843d66eb4a036cfb2ba78db70}{twin}}-\/>\mbox{\hyperlink{classdedge_a09b517c6e5062a4df65f797852403060}{origin}})) \{}
+\DoxyCodeLine{153       \textcolor{keywordflow}{if} (v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}-\/>type == MERGE\_VERTEX) \{}
+\DoxyCodeLine{154         addLine(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}, window);}
+\DoxyCodeLine{155         insertDiagonal(v, v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}()-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}});}
+\DoxyCodeLine{156         sleep(1);}
+\DoxyCodeLine{157       \}}
+\DoxyCodeLine{158       \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.erase(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a48feff13439ffd2eb0dfd478f2769ff4}{getPrev}}());}
+\DoxyCodeLine{159       \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.insert(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}});}
+\DoxyCodeLine{160       v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}} = v;}
+\DoxyCodeLine{161     \}}
+\DoxyCodeLine{162     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{163       set<dedge *, func>::iterator it;}
+\DoxyCodeLine{164       it = std::lower\_bound(\mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.begin(), \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.end(), v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}, left\_edgeto\_vertex);}
+\DoxyCodeLine{165       \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.begin()) \{}
+\DoxyCodeLine{166         it-\/-\/;}
+\DoxyCodeLine{167       \}}
+\DoxyCodeLine{168       \mbox{\hyperlink{classdedge}{dedge}} *s = *it;}
+\DoxyCodeLine{169       \textcolor{keywordflow}{if} (s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}-\/>type == MERGE\_VERTEX) \{}
+\DoxyCodeLine{170         addLine(v, s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}, window);}
+\DoxyCodeLine{171         insertDiagonal(v, s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}});}
+\DoxyCodeLine{172         sleep(1);}
+\DoxyCodeLine{173       \}}
+\DoxyCodeLine{174       s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}} = v;}
+\DoxyCodeLine{175     \}}
+\DoxyCodeLine{176   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMonotone_abf529ff878868f5023f9fab362e11b57}\label{classMonotone_abf529ff878868f5023f9fab362e11b57}} 
+\index{Monotone@{Monotone}!HANDLE\_SPLIT\_VERTEX@{HANDLE\_SPLIT\_VERTEX}}
+\index{HANDLE\_SPLIT\_VERTEX@{HANDLE\_SPLIT\_VERTEX}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{HANDLE\_SPLIT\_VERTEX()}{HANDLE\_SPLIT\_VERTEX()}}
+{\footnotesize\ttfamily void Monotone\+::\+H\+A\+N\+D\+L\+E\+\_\+\+S\+P\+L\+I\+T\+\_\+\+V\+E\+R\+T\+EX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Hepler For Handling S\+P\+L\+I\+T\+\_\+\+V\+E\+R\+T\+EX 
+
+Definition at line 107 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107                                        \{}
+\DoxyCodeLine{108     set<dedge *, func>::iterator it;}
+\DoxyCodeLine{109     it = std::lower\_bound(\mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.begin(), \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.end(), v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}, left\_edgeto\_vertex);}
+\DoxyCodeLine{110     \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.begin()) \{}
+\DoxyCodeLine{111       it-\/-\/;}
+\DoxyCodeLine{112     \}}
+\DoxyCodeLine{113     \mbox{\hyperlink{classdedge}{dedge}} *s = *it;}
+\DoxyCodeLine{114     addLine(v, s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}}, window);}
+\DoxyCodeLine{115     insertDiagonal(v, s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}});}
+\DoxyCodeLine{116     sleep(1);}
+\DoxyCodeLine{117     s-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}} = v;}
+\DoxyCodeLine{118     \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.insert(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}});}
+\DoxyCodeLine{119     v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}} = v;}
+\DoxyCodeLine{120   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMonotone_abc13cb9846d8fd76c148b64a96efd7f8}\label{classMonotone_abc13cb9846d8fd76c148b64a96efd7f8}} 
+\index{Monotone@{Monotone}!HANDLE\_START\_VERTEX@{HANDLE\_START\_VERTEX}}
+\index{HANDLE\_START\_VERTEX@{HANDLE\_START\_VERTEX}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{HANDLE\_START\_VERTEX()}{HANDLE\_START\_VERTEX()}}
+{\footnotesize\ttfamily void Monotone\+::\+H\+A\+N\+D\+L\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+V\+E\+R\+T\+EX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdvertex}{dvertex}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Function For handling S\+T\+A\+R\+T\+\_\+\+V\+E\+R\+T\+EX 
+
+Definition at line 86 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86                                        \{}
+\DoxyCodeLine{87     \mbox{\hyperlink{classMonotone_ad01172a7beae45b53f52986f90ac966d}{tree}}.insert(v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}});}
+\DoxyCodeLine{88     v-\/>\mbox{\hyperlink{classdvertex_ae5aa0403fc4d62f6d73c9c5d20d7048a}{edge}}-\/>\mbox{\hyperlink{classdedge_a2242e99df4ecd769f6c82a7c2902efe8}{helper}} = v;}
+\DoxyCodeLine{89   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMonotone_a61641a06b3995d495bbe8d794c7e31b3}\label{classMonotone_a61641a06b3995d495bbe8d794c7e31b3}} 
+\index{Monotone@{Monotone}!split\_into\_monotone@{split\_into\_monotone}}
+\index{split\_into\_monotone@{split\_into\_monotone}!Monotone@{Monotone}}
+\doxysubsubsection{\texorpdfstring{split\_into\_monotone()}{split\_into\_monotone()}}
+{\footnotesize\ttfamily void Monotone\+::split\+\_\+into\+\_\+monotone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMainWindow}{Main\+Window}} $\ast$}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Split into y-\/montone polygons 
+
+Definition at line 182 of file monotone.\+h.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{182                                           \{}
+\DoxyCodeLine{183     cout<<\textcolor{stringliteral}{"Converting to y-\/monotone polygons"}<<endl;}
+\DoxyCodeLine{184     window = w;}
+\DoxyCodeLine{185     \mbox{\hyperlink{classMonotone_ab4b68d769c23e0afcc3773c6a6f2d432}{form\_vertex\_type}}();}
+\DoxyCodeLine{186     \mbox{\hyperlink{classdvertex}{dvertex}} *v = Vertices.\mbox{\hyperlink{classdvertices_adf0e1d7adc54a89ecc846fa1e2414269}{head}};}
+\DoxyCodeLine{187     \textcolor{keywordflow}{while} (v) \{}
+\DoxyCodeLine{188     \textcolor{keywordflow}{if} (v-\/>type == START\_VERTEX) \mbox{\hyperlink{classMonotone_abc13cb9846d8fd76c148b64a96efd7f8}{HANDLE\_START\_VERTEX}}(v);}
+\DoxyCodeLine{189     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (v-\/>type == SPLIT\_VERTEX) \mbox{\hyperlink{classMonotone_abf529ff878868f5023f9fab362e11b57}{HANDLE\_SPLIT\_VERTEX}}(v);}
+\DoxyCodeLine{190     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (v-\/>type == END\_VERTEX) \mbox{\hyperlink{classMonotone_ae2de67e6fc14671eae8708710a3cc27a}{HANDLE\_END\_VERTEX}}(v);}
+\DoxyCodeLine{191     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (v-\/>type == MERGE\_VERTEX) \mbox{\hyperlink{classMonotone_a424a283bc01dbca9761a75c24491e5ed}{HANDLE\_MERGE\_VERTEX}}(v);}
+\DoxyCodeLine{192     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (v-\/>type == REGULAR\_VERTEX) \mbox{\hyperlink{classMonotone_ab4eb8f6049e524b146523feada7ae407}{HANDLE\_REGULAR\_VERTEX}}(v);}
+\DoxyCodeLine{193       v = v-\/>next;}
+\DoxyCodeLine{194     \}}
+\DoxyCodeLine{195     cout<<\textcolor{stringliteral}{"Finished converting to y-\/monotone polygons"}<<endl;}
+\DoxyCodeLine{196   \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algorithm/monotone.\+h\end{DoxyCompactItemize}

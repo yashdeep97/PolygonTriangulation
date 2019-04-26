@@ -8,6 +8,10 @@
 #include "dvertices.h"
 #include "../mainwindow.h"
 
+#define COLLINEAR 1 
+#define CLOCKWISE 2
+#define ANTICLOCKWISE 3
+
 using namespace std;
 
 
@@ -21,6 +25,7 @@ dfaces Faces; //Head of linked-list containing Face Collation
  *	Vertices are expected to be received in an anticlockwise order.
  */
 void getPolygon(vector<point> points) {
+    sleep(1);
     double a, b;
 	dvertex* firstVertex;
 	// dvertex *d_itr = new dvertex();
@@ -108,6 +113,22 @@ void insertDiagonal(dvertex* v1, dvertex* v2) {
 		delete face;
 	}
 }
+
+  /*! This function is used to calculate orientation of 3 points namely clockwise, anticlockwise and collinear.
+  * The idea here is to to get the difference between slopes of 2 lines by assuming a particular direction as a result
+  * the result obtained determines the direction of turn of the three points.
+  */
+  int orientation(dvertex* a, dvertex* b, dvertex* c) {
+    double dif;
+    dif = (b->y - a->y) * (c->x - b->x) - (b->x - a->x) * (c->y - b->y);
+    if (dif == 0) {
+      return COLLINEAR;
+    } else if (dif > 0 ) {
+      return CLOCKWISE;
+    } else {
+      return ANTICLOCKWISE;
+    }
+  }
 
 /**
  * Draws an edge in the GUI.

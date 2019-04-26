@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lineintersection',['LineIntersection',['../index.html',1,'']]]
+  ['polygon_20triangulation',['Polygon Triangulation',['../index.html',1,'']]]
 ];

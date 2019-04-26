@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['plot',['plot',['../classMainWindow.html#a415a314d7f9773f30d2ce3a6bd64f010',1,'MainWindow']]],
-  ['print',['print',['../classdvertex.html#ac5a6f72148c4520aeca343ecf4a8a6e5',1,'dvertex']]]
+  ['length',['length',['../classdfaces.html#a313ad1c1af48230f54fd33ad002122af',1,'dfaces']]]
 ];

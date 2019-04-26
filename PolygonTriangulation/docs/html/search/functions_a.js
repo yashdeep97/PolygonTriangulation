@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['setcoords',['setCoords',['../classdvertex.html#a590d11fd006b64eff1f0ef0f3210bfda',1,'dvertex']]],
-  ['sortedvertices',['sortedVertices',['../classdface.html#a2741d3ec5f9c1fa482099fcf613dd5c4',1,'dface']]]
+  ['plot',['plot',['../classMainWindow.html#a415a314d7f9773f30d2ce3a6bd64f010',1,'MainWindow']]],
+  ['print',['print',['../classdvertex.html#ac5a6f72148c4520aeca343ecf4a8a6e5',1,'dvertex']]]
 ];

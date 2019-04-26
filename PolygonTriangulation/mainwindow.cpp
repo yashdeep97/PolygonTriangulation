@@ -93,7 +93,8 @@ void MainWindow::on_btn_triangulate_clicked()
     polygon.pop_back();
 
     getPolygon(polygon);
-    split_into_monotone(this);
+    Monotone obj;
+    obj.split_into_monotone(this);
     Triangulate::triangulate();
 
 }

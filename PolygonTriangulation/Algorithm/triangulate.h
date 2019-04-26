@@ -12,7 +12,7 @@ class Triangulate{
 	 * Static function to triangulate y-monotone polygons.
 	*/
 	static void triangulate() {
-		sleep(2);
+		sleep(1);
 		cout<<"Starting Triangulation"<<endl;
 		dface* d_itr = Faces.head;
 		vector<pair<dvertex *, dvertex *> > pendingDiagonals;
