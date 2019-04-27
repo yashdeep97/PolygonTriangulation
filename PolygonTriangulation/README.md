@@ -8,15 +8,9 @@ The Polygon Triangulation has been implemented in 3 stages:
 + Triangulate the y-monotone polygon(s). 
 
 
-<!-- | Number of points | Run Time - Total CPU time(s) |
-|:-----:|:-----:|
-| 3 | 0.005 |
-| 100 | 0.011 |
-| 500 | 0.110 |
-| 1,000 | 0.180 |
-| 5,000 | 2.500 |
-| 10,000 | 13.400 |
-| 20,000 | 61.170 | -->
+![CPU Time](table.png "CPU Time")
+
+![CPU Time vs No. of points](chart.png "CPU Time vs No. of points")
 
 ## Complexity Analysis
 **Converting to y-monotone:**

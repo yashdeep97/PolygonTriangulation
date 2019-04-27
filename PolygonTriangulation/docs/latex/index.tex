@@ -4,7 +4,11 @@ The Polygon Triangulation has been implemented in 3 stages\+:
 \item D\+C\+EL structure ( made up of vertices, edges and faces ) to store the polygon(s).
 \item Convert the polygon into y-\/ \mbox{\hyperlink{classMonotone}{Monotone}} polygon(s).
 \item \mbox{\hyperlink{classTriangulate}{Triangulate}} the y-\/monotone polygon(s).
-\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysubsection{Complexity Analysis}\label{index_autotoc_md2}
+\end{DoxyItemize}
+
+
+
+\hypertarget{index_autotoc_md2}{}\doxysubsection{Complexity Analysis}\label{index_autotoc_md2}
 {\bfseries{Converting to y-\/monotone\+:}} Constructing the priority queue takes O(nlogn) for n vertices as each is handled after sorting. ~\newline
  Queries and updates on binary trees take O(logn) time. Thus handling all the events takes O(nlogn) time.~\newline
  The algorithm takes O(n) space.~\newline
